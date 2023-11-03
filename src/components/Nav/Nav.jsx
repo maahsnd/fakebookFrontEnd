@@ -5,9 +5,9 @@ import UserIcon from '../UserIcon/UserIcon';
 function Nav(props) {
   const { user } = props;
   return (
-    <nav>
-      <button className={styles.home}>
-        <Link to={'/' + user._id}>Fakebook</Link>
+    <nav className={styles.container}>
+      <button className={styles.homeBtn}>
+        <a href={'/' + user._id}>Fakebook</a>
       </button>
       <UserIcon user={user} />
     </nav>
