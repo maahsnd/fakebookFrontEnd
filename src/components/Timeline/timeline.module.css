@@ -1,0 +1,6 @@
+.container {
+  margin: 0 5vw 0 5vw;
+  background-color: pink;
+  height: 100vh;
+  display: flex;
+}

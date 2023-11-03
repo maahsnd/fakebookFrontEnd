@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Nav from '../Nav/Nav';
+import Timeline from '../Timeline/Timeline';
 
 function Home() {
   const { id } = useParams();
@@ -19,6 +20,7 @@ function Home() {
       {user && (
         <>
           <Nav user={user} />
+          <Timeline />
         </>
       )}{' '}
     </div>
