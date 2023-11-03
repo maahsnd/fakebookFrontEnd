@@ -23,6 +23,15 @@ function Nav(props) {
             />
           </button>
         </Tooltip>
+        <Tooltip title="Log Out">
+          <button className={styles.logOutBtn}>
+            <img
+              className={styles.logOutImg}
+              src="https://res.cloudinary.com/dscsiijis/image/upload/c_thumb,w_200,g_face/v1699052679/door_ye5pg7.png"
+              alt="log out"
+            />
+          </button>
+        </Tooltip>
       </div>
     </nav>
   );
