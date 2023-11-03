@@ -23,6 +23,7 @@ function Nav(props) {
             />
           </button>
         </Tooltip>
+        {/* IMPLEMENT LOGOUT ON CLICK */}
         <Tooltip title="Log Out">
           <button className={styles.logOutBtn}>
             <img
