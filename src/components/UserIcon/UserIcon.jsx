@@ -9,7 +9,7 @@ function UserIcon(props) {
   return (
     <div>
       <button className={styles.user_icon_container}>
-        <Link to={'/' + user._id}>
+        <Link to={'/users/' + user._id}>
           <img
             src={decodedImg}
             className={styles.user_icon}
