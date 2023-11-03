@@ -16,7 +16,7 @@ function UserIcon(props) {
             alt="user avatar"
           />
         </Link>
-        <a className={styles.user_link} href={`/${user._id}`}>
+        <a className={styles.user_link} href={`/users/${user._id}`}>
           {user.username}
         </a>
       </button>
