@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import styles from './nav.module.css';
 import UserIcon from '../UserIcon/UserIcon';
+import { Tooltip } from '@mui/material';
+import '@emotion/styled';
 
 function Nav(props) {
   const { user } = props;
@@ -11,13 +13,16 @@ function Nav(props) {
       </button>
       <div className={styles.buttonsContainer}>
         <UserIcon user={user} />
-        <button className={styles.friendRequestBtn}>
-          <img
-            className={styles.friendRequestImg}
-            src="https://res.cloudinary.com/dscsiijis/image/upload/c_thumb,w_200,g_face/v1699037440/friendship_e6zrqh.jpg"
-            alt="friends img"
-          />
-        </button>
+        {/* IMPLEMENT FRIENDS ON CLICK */}
+        <Tooltip title="Friend Requests">
+          <button className={styles.friendRequestBtn}>
+            <img
+              className={styles.friendRequestImg}
+              src="https://res.cloudinary.com/dscsiijis/image/upload/c_thumb,w_200,g_face/v1699037440/friendship_e6zrqh.jpg"
+              alt="friends img"
+            />
+          </button>
+        </Tooltip>
       </div>
     </nav>
   );
