@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Nav from '../Nav/Nav';
 
 function Home() {
   const { id } = useParams();
@@ -8,13 +9,20 @@ function Home() {
     const fetchUserHome = async () => {
       const response = await fetch('https://localhost:3000/users/' + id);
       const data = await response.json();
-      console.log(data);
       setUser(data);
     };
     fetchUserHome();
   }, []);
 
-  return <div>{user && <p>{user.username}</p>} </div>;
+  return (
+    <div>
+      {user && (
+        <>
+          <Nav user={user} />
+        </>
+      )}{' '}
+    </div>
+  );
 }
 
 export default Home;
