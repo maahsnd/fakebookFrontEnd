@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import LogIn from './components/Login/Login.jsx';
-import Home from './components/Login/Home/Home';
+import Login from './components/Login/Login';
+import Home from './components/Home/Home';
 
 function App() {
   const router = createBrowserRouter([
-    { path: '/login', element: <LogIn /> },
+    { path: '/login', element: <Login /> },
     { path: '/:id', element: <Home /> }
   ]);
 
