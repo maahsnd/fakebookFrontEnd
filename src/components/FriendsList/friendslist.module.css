@@ -4,3 +4,8 @@
   background-color: cyan;
   margin-left: auto;
 }
+
+.friendsTitle {
+  margin: 10px 0 5px 0;
+  text-align: center;
+}
