@@ -9,7 +9,16 @@ function Nav(props) {
       <button className={styles.homeBtn}>
         <a href={'/' + user._id}>Fakebook</a>
       </button>
-      <UserIcon user={user} />
+      <div className={styles.buttonsContainer}>
+        <UserIcon user={user} />
+        <button className={styles.friendRequestBtn}>
+          <img
+            className={styles.friendRequestImg}
+            src="https://res.cloudinary.com/dscsiijis/image/upload/c_thumb,w_200,g_face/v1699037440/friendship_e6zrqh.jpg"
+            alt="friends img"
+          />
+        </button>
+      </div>
     </nav>
   );
 }
