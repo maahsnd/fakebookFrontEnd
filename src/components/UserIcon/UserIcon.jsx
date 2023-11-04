@@ -5,7 +5,6 @@ import '@emotion/styled';
 
 function UserIcon(props) {
   const { user } = props;
-  //prevent src from being double quoted
 
   return (
     <div>
