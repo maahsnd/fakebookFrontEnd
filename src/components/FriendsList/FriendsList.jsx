@@ -6,6 +6,7 @@ import '@emotion/styled';
 
 function FriendsList({ id }) {
   const [friends, setFriends] = useState([]);
+  const [disabledButtons, setDisabledButtons] = useState({});
 
   useEffect(() => {
     const fetchFriends = async () => {
@@ -18,6 +19,11 @@ function FriendsList({ id }) {
       }
       const data = await response.json();
       setFriends(data);
+      let buttons = {};
+      data.forEach((user) => {
+        buttons[user._id] = false;
+      });
+      setDisabledButtons(buttons);
     };
     fetchFriends();
   }, []);
@@ -41,6 +47,7 @@ function FriendsList({ id }) {
       console.error('Error fetching friends');
       return;
     }
+    setDisabledButtons({ ...disabledButtons, [friendId]: true });
   };
 
   return (
@@ -52,7 +59,11 @@ function FriendsList({ id }) {
             <div className={styles.suggestedFriend} key={friend._id}>
               {' '}
               <UserIcon user={friend} />
-              <button className={styles.addFriendBtn} onClick={addFriend}>
+              <button
+                className={styles.addFriendBtn}
+                onClick={addFriend}
+                disabled={disabledButtons[friend._id]}
+              >
                 <Tooltip title="Add friend">
                   <img
                     className={styles.addFriendBtnImg}
@@ -61,6 +72,7 @@ function FriendsList({ id }) {
                     alt="add friend"
                   />
                 </Tooltip>
+                {disabledButtons[friend._id] ? <p>Sent</p> : <></>}
               </button>
             </div>
           ))}

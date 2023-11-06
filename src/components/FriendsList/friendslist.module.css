@@ -32,6 +32,11 @@
   background-color: transparent;
   border-radius: 50%;
 }
+.addFriendBtn > p {
+  position: relative;
+  top: -20px;
+  color: green;
+}
 
 .addFriendBtnImg:hover {
   background-color: pink;
