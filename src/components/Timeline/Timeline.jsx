@@ -4,9 +4,10 @@ import FriendsList from '../FriendsList/FriendsList';
 import NewPost from '../NewPost/NewPost';
 
 function Timeline({ id }) {
+  const [updatePosts, setUpdatePosts] = useState(false);
   return (
     <div className={styles.container}>
-      <NewPost />
+      <NewPost id={id} setUpdatePosts={setUpdatePosts} />
       <FriendsList id={id} />
     </div>
   );
