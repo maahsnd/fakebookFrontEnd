@@ -1,11 +1,20 @@
-import { Link } from 'react-router-dom';
 import styles from './nav.module.css';
 import UserIcon from '../UserIcon/UserIcon';
 import { Tooltip } from '@mui/material';
 import '@emotion/styled';
+import { useNavigate } from 'react-router-dom';
 
 function Nav(props) {
   const { user } = props;
+  const navigate = useNavigate();
+  const logOut = async () => {
+    const response = await fetch('https://localhost:3000/logout', {
+      method: 'POST'
+    });
+    if (response.ok) {
+      navigate('/login');
+    }
+  };
   return (
     <nav className={styles.container}>
       <button className={styles.homeBtn}>
@@ -25,7 +34,7 @@ function Nav(props) {
         </Tooltip>
         {/* IMPLEMENT LOGOUT ON CLICK */}
         <Tooltip title="Log Out">
-          <button className={styles.logOutBtn}>
+          <button className={styles.logOutBtn} onClick={logOut}>
             <img
               className={styles.logOutImg}
               src="https://res.cloudinary.com/dscsiijis/image/upload/c_thumb,w_200,g_face/v1699052679/door_ye5pg7.png"
