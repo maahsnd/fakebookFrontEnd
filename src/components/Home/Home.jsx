@@ -7,12 +7,12 @@ function Home() {
   const { id } = useParams();
   const [user, setUser] = useState(null);
   useEffect(() => {
-    const fetchUserHome = async () => {
+    const fetchUser = async () => {
       const response = await fetch('https://localhost:3000/users/' + id);
       const data = await response.json();
       setUser(data);
     };
-    fetchUserHome();
+    fetchUser();
   }, []);
 
   return (
@@ -20,7 +20,7 @@ function Home() {
       {user && (
         <>
           <Nav user={user} />
-          <Timeline />
+          <Timeline id={id} />
         </>
       )}{' '}
     </div>
