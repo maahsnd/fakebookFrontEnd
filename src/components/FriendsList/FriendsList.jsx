@@ -8,7 +8,7 @@ function FriendsList({ id }) {
   useEffect(() => {
     const fetchFriends = async () => {
       const response = await fetch(
-        'https://localhost:3000/users/' + id + '/friends'
+        'https://localhost:3000/users/' + id + '/suggested_friends'
       );
       if (!response.ok) {
         console.error('Error fetching friends');
@@ -22,7 +22,7 @@ function FriendsList({ id }) {
 
   return (
     <div className={styles.container}>
-      <h3 className={styles.friendsTitle}>Contacts</h3>
+      <h3 className={styles.friendsTitle}>Suggested Friends</h3>
       {friends && (
         <div className={styles.friendsList}>
           {friends.map((friend) => (
