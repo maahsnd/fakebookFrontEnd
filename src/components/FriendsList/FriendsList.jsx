@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styles from './friendslist.module.css';
 import UserIcon from '../UserIcon/UserIcon';
+import { Tooltip } from '@mui/material';
+import '@emotion/styled';
 
 function FriendsList({ id }) {
   const [friends, setFriends] = useState([]);
@@ -30,11 +32,13 @@ function FriendsList({ id }) {
               {' '}
               <UserIcon user={friend} />
               <button className={styles.addFriendBtn}>
-                <img
-                  className={styles.addFriendBtnImg}
-                  src="https://res.cloudinary.com/dscsiijis/image/upload/c_thumb,w_200,g_face/v1699298250/add-contact_e7l4rp.png"
-                  alt="add friend"
-                />
+                <Tooltip title="Add friend">
+                  <img
+                    className={styles.addFriendBtnImg}
+                    src="https://res.cloudinary.com/dscsiijis/image/upload/c_thumb,w_200,g_face/v1699298250/add-contact_e7l4rp.png"
+                    alt="add friend"
+                  />
+                </Tooltip>
               </button>
             </div>
           ))}
