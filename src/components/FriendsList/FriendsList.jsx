@@ -22,6 +22,27 @@ function FriendsList({ id }) {
     fetchFriends();
   }, []);
 
+  const addFriend = async (e) => {
+    const friendId = e.target.getAttribute('value');
+    const body = {
+      to: friendId
+    };
+    const response = await fetch(
+      'https://localhost:3000/users/' + id + '/friendrequests',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      }
+    );
+    if (!response.ok) {
+      console.error('Error fetching friends');
+      return;
+    }
+  };
+
   return (
     <div className={styles.container}>
       <h3 className={styles.friendsTitle}>Suggested Friends</h3>
@@ -31,10 +52,11 @@ function FriendsList({ id }) {
             <div className={styles.suggestedFriend} key={friend._id}>
               {' '}
               <UserIcon user={friend} />
-              <button className={styles.addFriendBtn}>
+              <button className={styles.addFriendBtn} onClick={addFriend}>
                 <Tooltip title="Add friend">
                   <img
                     className={styles.addFriendBtnImg}
+                    value={friend._id}
                     src="https://res.cloudinary.com/dscsiijis/image/upload/c_thumb,w_200,g_face/v1699298250/add-contact_e7l4rp.png"
                     alt="add friend"
                   />
