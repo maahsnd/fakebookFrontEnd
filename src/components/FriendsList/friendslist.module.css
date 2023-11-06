@@ -4,7 +4,6 @@
   background-color: cyan;
   margin-left: auto;
 }
-
 .friendsTitle {
   text-align: start;
   font-size: 24px;
@@ -14,5 +13,5 @@
 
 .friendsList {
   display: flex;
-  flex: column;
+  flex-direction: column;
 }
