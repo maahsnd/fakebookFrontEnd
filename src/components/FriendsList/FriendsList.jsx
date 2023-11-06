@@ -26,7 +26,17 @@ function FriendsList({ id }) {
       {friends && (
         <div className={styles.friendsList}>
           {friends.map((friend) => (
-            <UserIcon user={friend} key={friend._id} />
+            <div className={styles.suggestedFriend} key={friend._id}>
+              {' '}
+              <UserIcon user={friend} />
+              <button className={styles.addFriendBtn}>
+                <img
+                  className={styles.addFriendBtnImg}
+                  src="https://res.cloudinary.com/dscsiijis/image/upload/c_thumb,w_200,g_face/v1699298250/add-contact_e7l4rp.png"
+                  alt="add friend"
+                />
+              </button>
+            </div>
           ))}
         </div>
       )}{' '}
