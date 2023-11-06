@@ -1,0 +1,37 @@
+.postContainer {
+  display: flex;
+  width: 100%;
+  min-height: 150px;
+  height: fit-content;
+  justify-content: center;
+  position: relative;
+  margin-top: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.newPostTextArea {
+  width: 90%;
+  border-radius: 10px;
+  resize: none;
+  padding: 12px 20px 48px;
+  border: none;
+  font-size: 18px;
+}
+
+.postBtn {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  background-color: pink;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border: none;
+}
+
+.postBtn:hover {
+  box-shadow: 0 0 10px pink;
+  background-color: rgb(245, 197, 206);
+  cursor: pointer;
+}
