@@ -30,7 +30,7 @@ function Timeline({ id }) {
           setError={setError}
           error={error}
         />
-        {posts.length && (
+        {posts.length > 0 && (
           <>
             {posts.map((post) => {
               return (
