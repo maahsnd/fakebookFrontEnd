@@ -8,6 +8,17 @@
   margin-top: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
+.container {
+  width: 100%;
+}
+.error {
+  position: relative;
+  bottom: 25px;
+  color: darkred;
+  height: 30px;
+  margin: 0;
+  text-align: center;
+}
 
 .newPostTextArea {
   width: 90%;

@@ -5,13 +5,17 @@ function NewPost(props) {
   const { id, setUpdatePosts } = props;
   const [post, setPost] = useState();
   const [disabledButton, setDisabledButton] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
+    setDisabledButton(false);
+    setError(null);
     setPost(e.target.value);
   };
   const submitPost = async (e) => {
     setDisabledButton(true);
-    if (typeof post === 'undefined' || post === null) {
+    if (typeof post === 'undefined' || post === null || post === '') {
+      setError('Post must not be blank');
       console.error('blank post');
       return;
     }
@@ -29,6 +33,7 @@ function NewPost(props) {
     });
     if (!response.ok) {
       setDisabledButton(false);
+      setError('Post failed');
       return;
     }
     if (response.ok) {
@@ -38,23 +43,26 @@ function NewPost(props) {
     }
   };
   return (
-    <form className={styles.postContainer}>
-      <textarea
-        onChange={handleChange}
-        value={post}
-        className={styles.newPostTextArea}
-        name="newPost"
-        id="newPost"
-        placeholder="What's on your mind?"
-      ></textarea>
-      <button
-        className={styles.postBtn}
-        onClick={submitPost}
-        disabled={disabledButton}
-      >
-        Post
-      </button>
-    </form>
+    <div className={styles.container}>
+      <h4 className={styles.error}>{error}</h4>
+      <form className={styles.postContainer}>
+        <textarea
+          onChange={handleChange}
+          value={post}
+          className={styles.newPostTextArea}
+          name="newPost"
+          id="newPost"
+          placeholder="What's on your mind?"
+        ></textarea>
+        <button
+          className={styles.postBtn}
+          onClick={submitPost}
+          disabled={disabledButton}
+        >
+          Post
+        </button>
+      </form>
+    </div>
   );
 }
 
