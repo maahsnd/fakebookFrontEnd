@@ -7,6 +7,7 @@
   position: relative;
   margin-top: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
 }
 .container {
   width: 95%;
@@ -22,7 +23,7 @@
 
 .newPostTextArea {
   width: 90%;
-  border-radius: 10px;
+  border-radius: 15px;
   resize: none;
   padding: 12px 5% 48px;
   border: none;
