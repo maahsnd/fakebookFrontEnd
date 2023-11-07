@@ -9,7 +9,7 @@
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 .container {
-  width: 100%;
+  width: 95%;
 }
 .error {
   position: relative;
@@ -24,7 +24,7 @@
   width: 90%;
   border-radius: 10px;
   resize: none;
-  padding: 12px 20px 48px;
+  padding: 12px 5% 48px;
   border: none;
   font-size: 18px;
 }
