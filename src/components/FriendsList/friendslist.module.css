@@ -1,6 +1,6 @@
 .container {
   height: 100vh;
-
+  min-width: fit-content;
   background-color: cyan;
   margin-left: auto;
 }
