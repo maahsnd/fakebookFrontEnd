@@ -1,14 +1,18 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styles from './post.module.css';
 import UserIcon from '../UserIcon/UserIcon';
 import { DateTime } from 'luxon';
 
-function Post({ post }) {
+function Post({ post, setError, setUpdatePosts }) {
   const date = DateTime.fromISO(post.time);
+  const { id } = useParams();
   const humanDate = date
     .toLocaleString(DateTime.DATETIME_SHORT)
     .replace(/,/, ', at');
   const like = async () => {
+    const body = {
+      userid: id
+    };
     const response = await fetch(
       'https://localhost:3000/posts/' + post._id + '/likes',
       {
@@ -19,6 +23,13 @@ function Post({ post }) {
         body: JSON.stringify(body)
       }
     );
+    if (!response.ok) {
+      setError('Error: could not like');
+      setTimeout(() => {
+        setError(null);
+      }, '3 seconds');
+    }
+    setUpdatePosts(true);
   };
 
   return (

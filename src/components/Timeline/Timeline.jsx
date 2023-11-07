@@ -33,7 +33,13 @@ function Timeline({ id }) {
         {posts.length && (
           <>
             {posts.map((post) => {
-              return <Post post={post} setError={setError} />;
+              return (
+                <Post
+                  post={post}
+                  setError={setError}
+                  setUpdatePosts={setUpdatePosts}
+                />
+              );
             })}
           </>
         )}
