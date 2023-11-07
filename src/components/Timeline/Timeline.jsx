@@ -19,6 +19,7 @@ function Timeline({ id }) {
       setPosts(data);
     };
     fetchPosts();
+    setUpdatePosts(false);
   }, [updatePosts]);
 
   return (
