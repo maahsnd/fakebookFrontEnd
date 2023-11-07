@@ -2,12 +2,37 @@ import React, { useEffect, useState } from 'react';
 import styles from './timeline.module.css';
 import FriendsList from '../FriendsList/FriendsList';
 import NewPost from '../NewPost/NewPost';
+import Post from '../Post/Post';
 
 function Timeline({ id }) {
   const [updatePosts, setUpdatePosts] = useState(false);
+  const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const response = await fetch('https://localhost:3000/posts/' + id);
+      if (!response.ok) {
+        console.error('Error fetching posts');
+        return;
+      }
+      const data = await response.json();
+      setPosts(data);
+    };
+    fetchPosts();
+  }, [updatePosts]);
+
   return (
     <div className={styles.container}>
-      <NewPost id={id} setUpdatePosts={setUpdatePosts} />
+      <div className={styles.postsContainer}>
+        <NewPost id={id} setUpdatePosts={setUpdatePosts} />
+        {posts.length && (
+          <>
+            {posts.map((post) => {
+              return <Post post={post} />;
+            })}
+          </>
+        )}
+      </div>
+
       <FriendsList id={id} />
     </div>
   );
