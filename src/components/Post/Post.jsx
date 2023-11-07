@@ -8,7 +8,19 @@ function Post({ post }) {
   const humanDate = date
     .toLocaleString(DateTime.DATETIME_SHORT)
     .replace(/,/, ', at');
-  console.log(typeof post.time);
+  const like = async () => {
+    const response = await fetch(
+      'https://localhost:3000/posts/' + post._id + '/likes',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      }
+    );
+  };
+
   return (
     <div className={styles.masterContainer}>
       <div className={styles.postContainer}>
@@ -33,7 +45,9 @@ function Post({ post }) {
           </div>
         </div>
         <div className={styles.likeAndCommentBtnContainer}>
-          <button className={styles.likeBtn}>Like</button>
+          <button className={styles.likeBtn} onClick={like}>
+            Like
+          </button>
           <button className={styles.commentBtn}>Comment</button>
         </div>
       </div>

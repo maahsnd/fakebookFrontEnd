@@ -7,6 +7,7 @@ import Post from '../Post/Post';
 function Timeline({ id }) {
   const [updatePosts, setUpdatePosts] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(null);
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await fetch('https://localhost:3000/posts/' + id);
@@ -23,11 +24,16 @@ function Timeline({ id }) {
   return (
     <div className={styles.container}>
       <div className={styles.postsContainer}>
-        <NewPost id={id} setUpdatePosts={setUpdatePosts} />
+        <NewPost
+          id={id}
+          setUpdatePosts={setUpdatePosts}
+          setError={setError}
+          error={error}
+        />
         {posts.length && (
           <>
             {posts.map((post) => {
-              return <Post post={post} />;
+              return <Post post={post} setError={setError} />;
             })}
           </>
         )}
