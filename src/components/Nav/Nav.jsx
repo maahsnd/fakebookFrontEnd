@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import FriendRequests from '../FriendRequests/FriendRequests';
 
 function Nav(props) {
-  const { user } = props;
+  const { user, setUpdateUser } = props;
   const [friendModalIsOpen, setFriendModalIsOpen] = useState(false);
   const navigate = useNavigate();
   const logOut = async () => {
@@ -25,7 +25,6 @@ function Nav(props) {
       </button>
       <div className={styles.buttonsContainer}>
         <UserIcon user={user} />
-        {/* IMPLEMENT FRIENDS ON CLICK */}
         <Tooltip title="Friend Requests">
           <button
             className={styles.friendRequestBtn}
@@ -42,6 +41,7 @@ function Nav(props) {
           friendModalIsOpen={friendModalIsOpen}
           setFriendModalIsOpen={setFriendModalIsOpen}
           friendRequests={user.friendRequests}
+          setUpdateUser={setUpdateUser}
         />
         {/* IMPLEMENT LOGOUT ON CLICK */}
         <Tooltip title="Log Out">
