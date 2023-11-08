@@ -130,9 +130,11 @@ function Post({ post, setError, setUpdatePosts }) {
           <p className={styles.postText}>{post.text}</p>
           <hr />
           <div className={styles.likeAndComment}>
-            <button className={styles.likes}>
-              {post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}
-            </button>
+            <Tooltip title={post.likes.map((like) => `${like.username};  `)}>
+              <button className={styles.likes}>
+                {post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}
+              </button>
+            </Tooltip>
             <button className={styles.comments} onClick={commentLinkClick}>
               {post.comments.length}{' '}
               {post.comments.length === 1 ? 'Comment' : 'Comments'}
@@ -143,6 +145,7 @@ function Post({ post, setError, setUpdatePosts }) {
           <button className={styles.likeBtn} onClick={like}>
             Like
           </button>
+
           <button className={styles.commentBtn} onClick={() => setComment('')}>
             Comment
           </button>
