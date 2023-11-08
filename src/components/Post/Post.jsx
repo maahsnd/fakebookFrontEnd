@@ -147,7 +147,7 @@ function Post({ post, setError, setUpdatePosts }) {
             Comment
           </button>
         </div>
-
+        {comment !== null && commentForm}
         {showComments && (
           <div className={styles.commentContainer}>
             {post.comments.map((comment) => (
@@ -155,7 +155,6 @@ function Post({ post, setError, setUpdatePosts }) {
             ))}
           </div>
         )}
-        {comment !== null && commentForm}
       </div>
     </div>
   );
