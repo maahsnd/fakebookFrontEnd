@@ -32,8 +32,8 @@ function LikeDisplay({ likes, modalIsOpen, setModalIsOpen }) {
         <hr />
         <div>
           {likes.map((like) => (
-            <div className={styles.userIconContainer}>
-              <UserIcon user={like} key={like._id} />
+            <div className={styles.userIconContainer} key={like._id}>
+              <UserIcon user={like} />
             </div>
           ))}
         </div>
