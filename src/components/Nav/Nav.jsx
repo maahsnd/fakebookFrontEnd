@@ -42,6 +42,7 @@ function Nav(props) {
           setFriendModalIsOpen={setFriendModalIsOpen}
           friendRequests={user.friendRequests}
           setUpdateUser={setUpdateUser}
+          id={user._id}
         />
         {/* IMPLEMENT LOGOUT ON CLICK */}
         <Tooltip title="Log Out">
