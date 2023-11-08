@@ -78,7 +78,9 @@ function FriendsList({ id }) {
           ))}
         </div>
       )}{' '}
-      {!friends.length && <p>No contacts yet</p>}
+      {!friends.length && (
+        <p className={styles.noFriends}> No friend suggestions </p>
+      )}
     </div>
   );
 }
