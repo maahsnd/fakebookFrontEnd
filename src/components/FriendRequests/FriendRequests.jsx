@@ -14,7 +14,7 @@ function FriendRequests({
   const customStyles = {
     content: {
       height: 'min-content',
-      width: '350px',
+      width: '450px',
       position: 'absolute',
       margin: '40px 5px  0 auto',
       borderRadius: '15px',
@@ -39,6 +39,10 @@ function FriendRequests({
                 key={`request${request._id}`}
               >
                 <UserIcon user={request} />
+                <div className={styles.btnContainer}>
+                  <button className={styles.acceptBtn}>Confirm</button>
+                  <button className={styles.declineBtn}>Delete</button>
+                </div>
               </div>
             );
           })}
