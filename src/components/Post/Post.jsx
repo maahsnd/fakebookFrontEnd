@@ -6,10 +6,12 @@ import { useState } from 'react';
 import { Tooltip } from '@mui/material';
 import '@emotion/styled';
 import Comment from '../Comment/Comment';
+import LikeDisplay from '../LikeDisplay/LikeDisplay';
 
 function Post({ post, setError, setUpdatePosts }) {
   const [comment, setComment] = useState(null);
   const [showComments, setShowComments] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
   const { id } = useParams();
 
   const date = DateTime.fromISO(post.time);
@@ -118,6 +120,11 @@ function Post({ post, setError, setUpdatePosts }) {
 
   return (
     <div className={styles.masterContainer}>
+      <LikeDisplay
+        likes={post.likes}
+        modalIsOpen={modalIsOpen}
+        setModalIsOpen={setModalIsOpen}
+      />
       <div className={styles.postContainer}>
         <div className={styles.postHeaderContainer}>
           <div className={styles.postHeader}>
@@ -131,7 +138,10 @@ function Post({ post, setError, setUpdatePosts }) {
           <hr />
           <div className={styles.likeAndComment}>
             <Tooltip title={post.likes.map((like) => `${like.username};  `)}>
-              <button className={styles.likes}>
+              <button
+                className={styles.likes}
+                onClick={() => setModalIsOpen(true)}
+              >
                 {post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}
               </button>
             </Tooltip>
