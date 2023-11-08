@@ -137,14 +137,12 @@ function Post({ post, setError, setUpdatePosts }) {
           <p className={styles.postText}>{post.text}</p>
           <hr />
           <div className={styles.likeAndComment}>
-            <Tooltip title={post.likes.map((like) => `${like.username};  `)}>
-              <button
-                className={styles.likes}
-                onClick={() => setModalIsOpen(true)}
-              >
-                {post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}
-              </button>
-            </Tooltip>
+            <button
+              className={styles.likes}
+              onClick={() => setModalIsOpen(true)}
+            >
+              {post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}
+            </button>
             <button className={styles.comments} onClick={commentLinkClick}>
               {post.comments.length}{' '}
               {post.comments.length === 1 ? 'Comment' : 'Comments'}
