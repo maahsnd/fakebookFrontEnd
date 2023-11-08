@@ -1,0 +1,62 @@
+.commentContainer {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.userIcon {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+.userIconImg {
+  height: 40px;
+  border-radius: 50%;
+}
+
+.comment {
+  padding-left: 8px;
+}
+
+.commentBody {
+  background-color: rgba(128, 128, 128, 0.141);
+  border-radius: 15px;
+  padding: 10px 0 5px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.commentAuthor {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.commentText {
+  margin: 2px 8px 5px 0;
+}
+
+.commentTimeAndLike {
+  padding-left: 10px;
+  display: flex;
+}
+
+.commentTime {
+  margin: 0 10px 0 0;
+}
+
+.commentLike {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  height: min-content;
+  font-weight: 600;
+}
+
+.commentTime,
+.commentLike {
+  font-size: 14px;
+  color: grey;
+}

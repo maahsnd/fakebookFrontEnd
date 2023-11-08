@@ -5,9 +5,11 @@ import { DateTime } from 'luxon';
 import { useState } from 'react';
 import { Tooltip } from '@mui/material';
 import '@emotion/styled';
+import Comment from '../Comment/Comment';
 
 function Post({ post, setError, setUpdatePosts }) {
   const [comment, setComment] = useState(null);
+  const [showComments, setShowComments] = useState(false);
   const { id } = useParams();
 
   const date = DateTime.fromISO(post.time);
@@ -119,7 +121,12 @@ function Post({ post, setError, setUpdatePosts }) {
             <button className={styles.likes}>
               {post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}
             </button>
-            <button className={styles.comments}>
+            <button
+              className={styles.comments}
+              onClick={() => {
+                if (post.comments.length > 0) setShowComments(true);
+              }}
+            >
               {post.comments.length}{' '}
               {post.comments.length === 1 ? 'Comment' : 'Comments'}
             </button>
@@ -134,6 +141,13 @@ function Post({ post, setError, setUpdatePosts }) {
           </button>
         </div>
         {comment !== null && commentForm}
+        {showComments && (
+          <div className={styles.commentContainer}>
+            {post.comments.map((comment) => (
+              <Comment comment={comment} key={comment._id} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
