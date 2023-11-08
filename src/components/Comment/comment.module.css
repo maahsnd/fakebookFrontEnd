@@ -60,3 +60,9 @@
   font-size: 14px;
   color: grey;
 }
+
+.commentLike:hover {
+  color: pink;
+  cursor: pointer;
+  text-decoration: underline black;
+}
