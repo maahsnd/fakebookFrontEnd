@@ -12,6 +12,7 @@ function Home() {
       const response = await fetch('https://localhost:3000/users/' + id);
       const data = await response.json();
       setUser(data);
+      setUpdateUser(false);
     };
     fetchUser();
   }, [updateUser]);
