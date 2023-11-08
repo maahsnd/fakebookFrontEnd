@@ -11,17 +11,17 @@ function formatTimeDifference(inputDate) {
   const years = Math.floor(timeDifference / (1000 * 60 * 60 * 24 * 365.25)); // Average number of days in a year
 
   if (minutes < 60) {
-    return `${minutes} m `;
+    return `${minutes}m `;
   } else if (hours < 24) {
-    return `${hours} h `;
+    return `${hours}h `;
   } else if (days < 7) {
-    return `${days} d `;
+    return `${days}d `;
   } else if (weeks < 4) {
-    return `${weeks} w `;
+    return `${weeks}w `;
   } else if (months < 12) {
-    return `${months} m `;
+    return `${months}m `;
   } else {
-    return `${years} yr `;
+    return `${years}yr `;
   }
 }
 
