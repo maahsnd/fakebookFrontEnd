@@ -124,7 +124,9 @@ function Post({ post, setError, setUpdatePosts }) {
             <button
               className={styles.comments}
               onClick={() => {
-                if (post.comments.length > 0) setShowComments(true);
+                if (post.comments.length > 0) {
+                  showComments ? setShowComments(false) : setShowComments(true);
+                }
               }}
             >
               {post.comments.length}{' '}
