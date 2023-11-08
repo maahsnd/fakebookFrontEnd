@@ -6,7 +6,8 @@ function FriendRequests({
   friendModalIsOpen,
   setFriendModalIsOpen,
   friendRequests,
-  setUpdateUser
+  setUpdateUser,
+  id
 }) {
   const closeModal = () => {
     setFriendModalIsOpen(false);
@@ -21,6 +22,44 @@ function FriendRequests({
       padding: '15px'
     }
   };
+  const decline = async (e) => {
+    const requestId = e.target.value;
+    const response = await fetch(
+      'https://localhost:3000/users/' +
+        id +
+        '/friendrequests/' +
+        requestId +
+        '/decline',
+      {
+        method: 'POST'
+      }
+    );
+    if (!response.ok) {
+      console.error('Error handling request decline');
+      return;
+    }
+    setUpdateUser(true);
+  };
+
+  const accept = async (e) => {
+    const requestId = e.target.value;
+    const response = await fetch(
+      'https://localhost:3000/users/' +
+        id +
+        '/friendrequests/' +
+        requestId +
+        '/accept',
+      {
+        method: 'POST'
+      }
+    );
+    if (!response.ok) {
+      console.error('Error handling request accept');
+      return;
+    }
+    setUpdateUser(true);
+  };
+
   return (
     <Modal
       isOpen={friendModalIsOpen}
@@ -40,8 +79,20 @@ function FriendRequests({
               >
                 <UserIcon user={request} />
                 <div className={styles.btnContainer}>
-                  <button className={styles.acceptBtn}>Confirm</button>
-                  <button className={styles.declineBtn}>Delete</button>
+                  <button
+                    value={request._id}
+                    className={styles.acceptBtn}
+                    onClick={accept}
+                  >
+                    Confirm
+                  </button>
+                  <button
+                    value={request._id}
+                    className={styles.declineBtn}
+                    onClick={decline}
+                  >
+                    Delete
+                  </button>
                 </div>
               </div>
             );
