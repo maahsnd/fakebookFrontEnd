@@ -20,7 +20,7 @@ function Home() {
       {user && (
         <>
           <Nav user={user} />
-          <Timeline id={id} />
+          <Timeline id={user._id} />
         </>
       )}{' '}
     </div>

@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import styles from './nav.module.css';
 import UserIcon from '../UserIcon/UserIcon';
 import { Tooltip } from '@mui/material';
 import '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
+import FriendRequests from '../FriendRequests/FriendRequests';
 
 function Nav(props) {
   const { user } = props;
+  const [friendModalIsOpen, setFriendModalIsOpen] = useState(false);
   const navigate = useNavigate();
   const logOut = async () => {
     const response = await fetch('https://localhost:3000/logout', {
@@ -24,7 +27,10 @@ function Nav(props) {
         <UserIcon user={user} />
         {/* IMPLEMENT FRIENDS ON CLICK */}
         <Tooltip title="Friend Requests">
-          <button className={styles.friendRequestBtn}>
+          <button
+            className={styles.friendRequestBtn}
+            onClick={() => setFriendModalIsOpen(true)}
+          >
             <img
               className={styles.friendRequestImg}
               src="https://res.cloudinary.com/dscsiijis/image/upload/c_thumb,w_200,g_face/v1699037440/friendship_e6zrqh.jpg"
@@ -32,6 +38,11 @@ function Nav(props) {
             />
           </button>
         </Tooltip>
+        <FriendRequests
+          friendModalIsOpen={friendModalIsOpen}
+          setFriendModalIsOpen={setFriendModalIsOpen}
+          friendRequests={user.friendRequests}
+        />
         {/* IMPLEMENT LOGOUT ON CLICK */}
         <Tooltip title="Log Out">
           <button className={styles.logOutBtn} onClick={logOut}>

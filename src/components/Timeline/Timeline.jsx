@@ -8,6 +8,7 @@ function Timeline({ id }) {
   const [updatePosts, setUpdatePosts] = useState(false);
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
+
   useEffect(() => {
     const fetchPosts = async () => {
       const response = await fetch('https://localhost:3000/posts/' + id);
