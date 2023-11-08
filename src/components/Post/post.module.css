@@ -122,14 +122,33 @@ hr {
 
 .submitCommentBtn {
   position: absolute;
-  right: 5px;
-  bottom: 5px;
   border: none;
   background-color: transparent;
   width: min-content;
   border-radius: 20%;
   padding: 2px 4px 4px 2px;
   height: 34px;
+}
+
+.submitCommentBtn {
+  bottom: 5px;
+  right: 5px;
+}
+
+.deleteCommentBtn {
+  top: 5px;
+  right: 5px;
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  width: min-content;
+  padding: 2px;
+  height: 22px;
+  border-radius: 5px;
+}
+
+.deleteCommentImg {
+  height: 20px;
 }
 
 .submitCommentImg {
@@ -140,4 +159,9 @@ hr {
   box-shadow: 0 0 10px pink;
   cursor: pointer;
   border: 1px solid black;
+}
+
+.deleteCommentBtn:hover {
+  background-color: rgba(255, 0, 0, 0.574);
+  cursor: pointer;
 }
