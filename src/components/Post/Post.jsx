@@ -70,6 +70,18 @@ function Post({ post, setError, setUpdatePosts }) {
     setUpdatePosts(true);
   };
 
+  const commentLinkClick = () => {
+    if (post.comments.length > 0) {
+      setComment('');
+      if (showComments) {
+        setShowComments(false);
+        setComment(null);
+      } else {
+        setShowComments(true);
+      }
+    }
+  };
+
   const commentForm = (
     <form className={styles.commentForm}>
       <textarea
@@ -121,14 +133,7 @@ function Post({ post, setError, setUpdatePosts }) {
             <button className={styles.likes}>
               {post.likes.length} {post.likes.length === 1 ? 'Like' : 'Likes'}
             </button>
-            <button
-              className={styles.comments}
-              onClick={() => {
-                if (post.comments.length > 0) {
-                  showComments ? setShowComments(false) : setShowComments(true);
-                }
-              }}
-            >
+            <button className={styles.comments} onClick={commentLinkClick}>
               {post.comments.length}{' '}
               {post.comments.length === 1 ? 'Comment' : 'Comments'}
             </button>
@@ -142,7 +147,7 @@ function Post({ post, setError, setUpdatePosts }) {
             Comment
           </button>
         </div>
-        {comment !== null && commentForm}
+
         {showComments && (
           <div className={styles.commentContainer}>
             {post.comments.map((comment) => (
@@ -150,6 +155,7 @@ function Post({ post, setError, setUpdatePosts }) {
             ))}
           </div>
         )}
+        {comment !== null && commentForm}
       </div>
     </div>
   );
