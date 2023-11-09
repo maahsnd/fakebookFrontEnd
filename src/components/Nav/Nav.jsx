@@ -44,7 +44,18 @@ function Nav(props) {
           setUpdateUser={setUpdateUser}
           id={user._id}
         />
-        {/* IMPLEMENT LOGOUT ON CLICK */}
+        <Tooltip title="Settings">
+          <button
+            className={styles.settingsBtn}
+            onClick={() => navigate(`/${user._id}/settings`)}
+          >
+            <img
+              className={styles.settingsImg}
+              src="https://res.cloudinary.com/dscsiijis/image/upload/c_scale,w_50/v1699554218/setting_b29rfh.png"
+              alt="Settings icon"
+            />
+          </button>
+        </Tooltip>
         <Tooltip title="Log Out">
           <button className={styles.logOutBtn} onClick={logOut}>
             <img
