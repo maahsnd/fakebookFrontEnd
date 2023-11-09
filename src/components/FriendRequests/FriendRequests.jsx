@@ -68,7 +68,7 @@ function FriendRequests({
       ariaHideApp={false}
       style={customStyles}
     >
-      {friendRequests ? (
+      {friendRequests && friendRequests.length > 0 ? (
         <div className={styles.friendRequestsContainer}>
           <h3 className={styles.friendRequestsTitle}>Friend Requests</h3>
           <hr />
@@ -100,7 +100,11 @@ function FriendRequests({
           })}
         </div>
       ) : (
-        <p>No friend requests</p>
+        <div className={styles.friendRequestsContainer}>
+          <h3 className={styles.friendRequestsTitle}>Friend Requests</h3>
+          <hr />
+          <p>No friend requests</p>
+        </div>
       )}
     </Modal>
   );
