@@ -1,6 +1,7 @@
 import styles from './friendrequests.module.css';
 import UserIcon from '../UserIcon/UserIcon';
 import Modal from 'react-modal';
+import { useState } from 'react';
 
 function FriendRequests({
   friendModalIsOpen,
@@ -9,6 +10,7 @@ function FriendRequests({
   setUpdateUser,
   id
 }) {
+  const [disabledButton, setDisabledButton] = useState(false);
   const closeModal = () => {
     setFriendModalIsOpen(false);
   };
@@ -23,6 +25,7 @@ function FriendRequests({
     }
   };
   const decline = async (e) => {
+    setDisabledButton(true);
     const requestId = e.target.value;
     const response = await fetch(
       'https://localhost:3000/users/' +
@@ -42,6 +45,7 @@ function FriendRequests({
   };
 
   const accept = async (e) => {
+    setDisabledButton(true);
     const requestId = e.target.value;
     const response = await fetch(
       'https://localhost:3000/users/' +
@@ -80,6 +84,7 @@ function FriendRequests({
                 <UserIcon user={request} />
                 <div className={styles.btnContainer}>
                   <button
+                    disabled={disabledButton}
                     value={request._id}
                     className={styles.acceptBtn}
                     onClick={accept}
@@ -87,6 +92,7 @@ function FriendRequests({
                     Confirm
                   </button>
                   <button
+                    disabled={disabledButton}
                     value={request._id}
                     className={styles.declineBtn}
                     onClick={decline}
