@@ -9,7 +9,7 @@ function App() {
   const router = createBrowserRouter([
     { path: '/login', element: <Login /> },
     { path: '/:id', element: <Home /> },
-    { path: '/:id/setting', element: <Settings /> }
+    { path: '/:id/settings', element: <Settings /> }
   ]);
 
   return <RouterProvider router={router} />;
