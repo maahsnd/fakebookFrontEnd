@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom';
 function Settings() {
   const [showForm, setShowForm] = useState(false);
   const [updateUser, setUpdateUser] = useState(false);
+  const [photo, setPhoto] = useState(null);
   const [user, setUser] = useState(null);
   const { id } = useParams();
   useEffect(() => {
@@ -48,7 +49,11 @@ function Settings() {
                 showForm ? styles.formContainerShow : styles.formContainerHide
               }
             >
-              <form className={styles.profPicForm}>
+              <form
+                className={
+                  styles.profPicForm
+                } /* onSubmit={handlePhotoSubmit} */
+              >
                 <input type="file" name="profPicSelect" id="profPicSelect" />
                 <button className={styles.submitProfPic}>Submit</button>
               </form>
