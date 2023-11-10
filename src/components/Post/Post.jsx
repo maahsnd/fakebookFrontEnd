@@ -161,8 +161,11 @@ function Post({ post, setError, setUpdatePosts }) {
         {comment !== null && commentForm}
         {showComments && (
           <div className={styles.commentContainer}>
-            {post.comments.map((comment) => (
-              <Comment comment={comment} key={comment._id} />
+            {post.comments.map((comment, index) => (
+              <Comment
+                comment={post.comments[post.comments.length - 1 - index]}
+                key={post.comments[post.comments.length - 1 - index]._id}
+              />
             ))}
           </div>
         )}
