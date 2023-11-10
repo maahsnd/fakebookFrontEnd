@@ -8,6 +8,8 @@
 
 .user_icon {
   height: 50px;
+  width: 50px;
+  object-fit: cover;
   background-color: transparent;
   border-radius: 50%;
 }
