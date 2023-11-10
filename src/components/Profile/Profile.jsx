@@ -9,6 +9,9 @@ import { useParams } from 'react-router-dom';
 function Profile() {
   const [user, setUser] = useState(null);
   const [updateUser, setUpdateUser] = useState(false);
+  const [posts, setPosts] = useState(null);
+  const [updatePosts, setUpdatePosts] = useState(false);
+  const [error, setError] = useState(null);
   const { id } = useParams();
 
   useEffect(() => {
@@ -16,26 +19,59 @@ function Profile() {
       const response = await fetch('https://localhost:3000/users/' + id);
       const data = await response.json();
       setUser(data);
-      setUpdateUser(false);
     };
     fetchUser();
-  }, [updateUser]);
+  }, []);
 
-  return (
-    <div className={styles.pageContainer}>
-      <Nav user={user} setUpdateUser={setUpdateUser} />
-      <div className={styles.profileContainer}>
-        <header className={styles.userContainer}>
-          <img
-            src={user.profilePhoto}
-            alt="User profile photo"
-            className={styles.userProfImg}
-          />
-          <h3 className={styles.userName}>{user.username}</h3>
-        </header>
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const response = await fetch('https://localhost:3000/posts/' + id);
+      const data = await response.json();
+      setPosts(data);
+      setUpdatePosts(false);
+    };
+    fetchPosts();
+  }, [updatePosts]);
+
+  if (user && posts)
+    return (
+      <div className={styles.pageContainer}>
+        <Nav user={user} setUpdateUser={setUpdateUser} />
+        <div className={styles.profileContainer}>
+          <header className={styles.userContainer}>
+            <img
+              src={user.profilePhoto}
+              alt="User profile photo"
+              className={styles.userProfImg}
+            />
+            <h3 className={styles.userName}>{user.username}</h3>
+          </header>
+          <div className={styles.friendAndBio}></div>
+          <div className={styles.posts}>
+            <NewPost
+              id={user._id}
+              setUpdatePosts={setUpdatePosts}
+              setError={setError}
+              error={error}
+            />
+            {posts.length > 0 && (
+              <>
+                {posts.map((post) => {
+                  return (
+                    <Post
+                      key={post._id}
+                      post={post}
+                      setError={setError}
+                      setUpdatePosts={setUpdatePosts}
+                    />
+                  );
+                })}
+              </>
+            )}
+          </div>
+        </div>
       </div>
-    </div>
-  );
+    );
 }
 
 export default Profile;
