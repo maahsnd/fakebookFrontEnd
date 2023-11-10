@@ -11,7 +11,9 @@ function Timeline({ id }) {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch('https://localhost:3000/posts/' + id);
+      const response = await fetch(
+        'https://localhost:3000/posts/' + id + '/all'
+      );
       if (!response.ok) {
         console.error('Error fetching posts');
         return;
