@@ -6,8 +6,9 @@ import { useParams } from 'react-router-dom';
 function Settings() {
   const [showForm, setShowForm] = useState(false);
   const [updateUser, setUpdateUser] = useState(false);
-  const [photo, setPhoto] = useState(null);
+  const [disablePicSubmitBtn, setDisablePicSubmitBtn] = useState(false);
   const [user, setUser] = useState(null);
+  const [file, setFile] = useState(null);
   const { id } = useParams();
   useEffect(() => {
     const fetchUser = async () => {
@@ -18,6 +19,36 @@ function Settings() {
     };
     fetchUser();
   }, [updateUser]);
+
+  const onFileChange = (e) => {
+    const newFile = e.target.files[0];
+    setFile(newFile);
+  };
+
+  const handleSubmit = async (e) => {
+    setDisablePicSubmitBtn(true);
+    e.preventDefault();
+    if (!file) {
+      console.error('no file');
+      return;
+    }
+    const formData = new FormData();
+    formData.set('profilePicture', file);
+    try {
+      const response = await fetch(
+        'https://localhost:3000/users/' + id + '/profilepic',
+        {
+          method: 'POST',
+          body: formData
+        }
+      );
+      setDisablePicSubmitBtn(false);
+    } catch (err) {
+      console.error(err);
+      return;
+    }
+    setUpdateUser(true);
+  };
 
   if (user) {
     return (
@@ -50,12 +81,22 @@ function Settings() {
               }
             >
               <form
-                className={
-                  styles.profPicForm
-                } /* onSubmit={handlePhotoSubmit} */
+                onSubmit={handleSubmit}
+                className={styles.profPicForm}
+                encType="multipart/form-data"
               >
-                <input type="file" name="profPicSelect" id="profPicSelect" />
-                <button className={styles.submitProfPic}>Submit</button>
+                <input
+                  type="file"
+                  name="profPicSelect"
+                  id="profPicSelect"
+                  onChange={onFileChange}
+                />
+                <button
+                  className={styles.submitProfPic}
+                  disabled={disablePicSubmitBtn}
+                >
+                  Submit
+                </button>
               </form>
             </div>
           </div>
