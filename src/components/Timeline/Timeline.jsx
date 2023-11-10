@@ -36,11 +36,11 @@ function Timeline({ id }) {
         />
         {posts.length > 0 && (
           <>
-            {posts.map((post) => {
+            {posts.map((post, index) => {
               return (
                 <Post
-                  key={post._id}
-                  post={post}
+                  post={posts[posts.length - 1 - index]}
+                  key={posts[posts.length - 1 - index]._id}
                   setError={setError}
                   setUpdatePosts={setUpdatePosts}
                 />
