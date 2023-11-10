@@ -143,7 +143,7 @@ function Settings() {
                 value={bio}
               ></textarea>
               <button className={styles.bioBtn} disabled={disableBioBtn}>
-                Post
+                Update
               </button>
             </form>
           </div>
