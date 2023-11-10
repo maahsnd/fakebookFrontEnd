@@ -46,28 +46,35 @@ function Profile() {
             />
             <h3 className={styles.userName}>{user.username}</h3>
           </header>
-          <div className={styles.friendAndBio}></div>
-          <div className={styles.posts}>
-            <NewPost
-              id={user._id}
-              setUpdatePosts={setUpdatePosts}
-              setError={setError}
-              error={error}
-            />
-            {posts.length > 0 && (
-              <>
-                {posts.map((post) => {
-                  return (
-                    <Post
-                      key={post._id}
-                      post={post}
-                      setError={setError}
-                      setUpdatePosts={setUpdatePosts}
-                    />
-                  );
-                })}
-              </>
-            )}
+          <div className={styles.contentContainer}>
+            <div className={styles.friendAndBio}>
+              <div className={styles.bioContainer}>
+                <h3 className={styles.bioTitle}>About me</h3>
+                <p className={styles.bioText}>{user.bio}</p>
+              </div>
+            </div>
+            <div className={styles.posts}>
+              <NewPost
+                id={user._id}
+                setUpdatePosts={setUpdatePosts}
+                setError={setError}
+                error={error}
+              />
+              {posts.length > 0 && (
+                <>
+                  {posts.map((post) => {
+                    return (
+                      <Post
+                        key={post._id}
+                        post={post}
+                        setError={setError}
+                        setUpdatePosts={setUpdatePosts}
+                      />
+                    );
+                  })}
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>
