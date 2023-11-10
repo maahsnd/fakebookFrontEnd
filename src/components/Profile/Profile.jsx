@@ -47,10 +47,23 @@ function Profile() {
             <h3 className={styles.userName}>{user.username}</h3>
           </header>
           <div className={styles.contentContainer}>
-            <div className={styles.friendAndBio}>
+            <div className={styles.friendsAndBio}>
               <div className={styles.bioContainer}>
                 <h3 className={styles.bioTitle}>About me</h3>
                 <p className={styles.bioText}>{user.bio}</p>
+              </div>
+              <div className={styles.friendsContainer}>
+                <h3 className={styles.friendsTitle}>Friends</h3>
+                {user.friends.length > 0 ? (
+                  <div className={styles.friendsList}>
+                    {' '}
+                    {user.friends.map((friend) => (
+                      <UserIcon user={friend} key={friend._id} />
+                    ))}
+                  </div>
+                ) : (
+                  <p>No friends yet!</p>
+                )}
               </div>
             </div>
             <div className={styles.posts}>

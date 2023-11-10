@@ -1,9 +1,6 @@
 .profileContainer {
   width: 90vw;
   margin: 3vh 5vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 }
 
 .userContainer {
@@ -17,7 +14,7 @@
   object-fit: cover;
   background-color: transparent;
   border-radius: 50%;
-  border: pink 2px solid;
+  border: pink 3px solid;
 }
 
 .userName {
@@ -30,16 +27,18 @@
   display: flex;
 }
 
-.bioContainer {
-  min-width: 20vw;
+.bioContainer,
+.friendsContainer {
+  min-width: 28vw;
   max-width: 400px;
   height: fit-content;
-  margin: 20px 40px 20px 0;
+  margin: 20px 60px 20px 0;
   border-radius: 15px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }
 
-.bioTitle {
+.bioTitle,
+.friendsTitle {
   width: calc(100% - 24px);
   border-radius: 15px 15px 0 0;
   margin: 0;
@@ -61,8 +60,31 @@
 
 .posts {
   margin-top: -20px;
-  width: 60%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-content: flex-end;
+}
+
+.posts > div {
+  width: 100%;
+}
+
+.friendsList > div {
+  padding: 10px 0px 5px 10px;
+}
+
+.friendsList {
+  border-radius: 0 0 15px 15px;
+  border: 2px solid pink;
+  border-top: none;
+}
+
+.friendsList > div:first-child {
+  padding-top: 20px;
+}
+
+.friendsList > div:last-child {
+  padding-bottom: 20px;
 }
