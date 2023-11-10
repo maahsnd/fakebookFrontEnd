@@ -3,9 +3,13 @@ import styles from './login.module.css';
 import LoginForm from '../LoginForm/LoginForm';
 function LogIn() {
   const [showSignUpForm, setShowSignUpForm] = useState(false);
+  const [slideUp, setSlideUp] = useState(false);
 
   const handleButtonClick = () => {
-    setShowSignUpForm(true);
+    setSlideUp(true);
+    setTimeout(() => {
+      setShowSignUpForm(true);
+    }, '500');
   };
 
   return (
@@ -14,7 +18,10 @@ function LogIn() {
         {showSignUpForm ? (
           <LoginForm />
         ) : (
-          <button className={styles.mainBtn} onClick={handleButtonClick}>
+          <button
+            className={`${styles.mainBtn} ${slideUp ? styles.slideUp : ''}`}
+            onClick={handleButtonClick}
+          >
             <h1 className={styles.title}>Fakebook</h1>
           </button>
         )}

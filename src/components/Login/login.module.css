@@ -18,3 +18,8 @@
   background-color: pink;
   border-radius: 50%;
 }
+
+.slideUp {
+  transform: translateY(-100vh);
+  transition: transform 0.5s ease-in-out;
+}
