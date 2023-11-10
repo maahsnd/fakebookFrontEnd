@@ -7,19 +7,23 @@ function Settings() {
   const [showForm, setShowForm] = useState(false);
   const [updateUser, setUpdateUser] = useState(false);
   const [disablePicSubmitBtn, setDisablePicSubmitBtn] = useState(false);
+  const [disableBioBtn, setDisableBioBtn] = useState(false);
   const [user, setUser] = useState(null);
   const [file, setFile] = useState(null);
+  const [bio, setBio] = useState('');
   const { id } = useParams();
   useEffect(() => {
     const fetchUser = async () => {
       const response = await fetch('https://localhost:3000/users/' + id);
       const data = await response.json();
       setUser(data);
+      setBio(data.bio);
       setUpdateUser(false);
     };
     fetchUser();
   }, [updateUser]);
 
+  //photo functions
   const onFileChange = (e) => {
     const newFile = e.target.files[0];
     setFile(newFile);
@@ -43,6 +47,33 @@ function Settings() {
         }
       );
       setDisablePicSubmitBtn(false);
+    } catch (err) {
+      console.error(err);
+      return;
+    }
+    setUpdateUser(true);
+  };
+
+  //bio functions
+  const bioChange = (e) => {
+    setBio(e.target.value);
+  };
+  const bioSubmit = async (e) => {
+    e.preventDefault();
+    setDisableBioBtn(true);
+    const body = {
+      text: bio
+    };
+    e.preventDefault();
+    try {
+      await fetch('https://localhost:3000/users/' + id + '/bio', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      });
+      setDisableBioBtn(false);
     } catch (err) {
       console.error(err);
       return;
@@ -103,18 +134,15 @@ function Settings() {
 
           <div className={styles.aboutMe}>
             <h3 className={styles.aboutMeTitle}>About Me</h3>
-            <form className={styles.bioForm}>
+            <form className={styles.bioForm} onSubmit={bioSubmit}>
               <textarea
-                /*    onChange={} */
-                /*             value={} */
+                onChange={bioChange}
                 className={styles.bioTextArea}
                 name="updateBio"
                 id="updateBio"
+                value={bio}
               ></textarea>
-              <button
-                className={styles.bioBtn}
-                /*    onClick={} */
-              >
+              <button className={styles.bioBtn} disabled={disableBioBtn}>
                 Post
               </button>
             </form>
