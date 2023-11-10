@@ -160,7 +160,7 @@ function Post({ post, setError, setUpdatePosts }) {
         </div>
         {comment !== null && commentForm}
         {showComments && (
-          <div className={styles.commentContainer}>
+          <div className={styles.postCommentContainer}>
             {post.comments.map((comment, index) => (
               <Comment
                 comment={post.comments[post.comments.length - 1 - index]}
