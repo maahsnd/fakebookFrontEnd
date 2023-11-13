@@ -37,6 +37,30 @@ function LoginForm() {
     }
   };
 
+  const guestSignIn = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch('https://localhost:3000/login/guest', {
+        method: 'POST'
+      });
+      const data = await response.json();
+      console.log(data);
+      if (response.ok) {
+        // Store the JWT token in cookies
+        Cookies.set('jwt_token', data.token);
+        Cookies.set('user_id', data.userId);
+        navigate('/' + data.userId);
+        return;
+      } else {
+        setError(data.msg);
+        // Handle authentication error
+        console.error('Authentication failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   const handleSignupSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -105,7 +129,9 @@ function LoginForm() {
             Log in
           </button>
           <hr />
-          <button className={styles.btn}>Log in as Guest User</button>
+          <button className={styles.btn} onClick={guestSignIn}>
+            Log in as Guest User
+          </button>
           <button
             className={styles.btn}
             onClick={() => setPreexistingUser(false)}
