@@ -92,12 +92,12 @@ function Settings() {
     navigate('/');
   }
 
-  if (user) {
-    return (
-      <>
-        <Nav setUpdateUser={setUpdateUser} />
-        <div className={styles.settingsContainer}>
-          <h2 className={styles.settingsTitle}>Settings</h2>
+  return (
+    <>
+      <Nav setUpdateUser={setUpdateUser} />
+      <div className={styles.settingsContainer}>
+        <h2 className={styles.settingsTitle}>Settings</h2>
+        {user && (
           <div className={styles.profPicContainer}>
             <h3 className={styles.profPicTitle}>Profile Picture</h3>
             <div className={styles.picAndChangeContainer}>
@@ -142,31 +142,31 @@ function Settings() {
               </form>
             </div>
           </div>
+        )}
 
-          <div className={styles.aboutMe}>
-            <h3 className={styles.aboutMeTitle}>About Me</h3>
-            <form className={styles.bioForm} onSubmit={bioSubmit}>
-              <textarea
-                onChange={bioChange}
-                className={styles.bioTextArea}
-                name="updateBio"
-                id="updateBio"
-                value={bio}
-                placeholder={
-                  bio == '' || bio == undefined
-                    ? 'Write something about yourself!'
-                    : null
-                }
-              ></textarea>
-              <button className={styles.bioBtn} disabled={disableBioBtn}>
-                Update
-              </button>
-            </form>
-          </div>
+        <div className={styles.aboutMe}>
+          <h3 className={styles.aboutMeTitle}>About Me</h3>
+          <form className={styles.bioForm} onSubmit={bioSubmit}>
+            <textarea
+              onChange={bioChange}
+              className={styles.bioTextArea}
+              name="updateBio"
+              id="updateBio"
+              value={bio}
+              placeholder={
+                bio == '' || bio == undefined
+                  ? 'Write something about yourself!'
+                  : null
+              }
+            ></textarea>
+            <button className={styles.bioBtn} disabled={disableBioBtn}>
+              Update
+            </button>
+          </form>
         </div>
-      </>
-    );
-  }
+      </div>
+    </>
+  );
 }
 
 export default Settings;

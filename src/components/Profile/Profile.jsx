@@ -49,10 +49,10 @@ function Profile() {
     navigate('/');
   }
 
-  if (user && posts)
-    return (
-      <div className={styles.pageContainer}>
-        <Nav setUpdateUser={setUpdateUser} />
+  return (
+    <div className={styles.pageContainer}>
+      <Nav setUpdateUser={setUpdateUser} />
+      {user && posts && (
         <div className={styles.profileContainer}>
           <header className={styles.userContainer}>
             <img
@@ -109,8 +109,9 @@ function Profile() {
             </div>
           </div>
         </div>
-      </div>
-    );
+      )}
+    </div>
+  );
 }
 
 export default Profile;

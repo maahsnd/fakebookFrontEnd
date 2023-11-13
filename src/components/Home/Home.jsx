@@ -30,9 +30,9 @@ function Home() {
 
   return (
     <div>
+      <Nav setUpdateUser={setUpdateUser} />
       {user && (
         <>
-          <Nav setUpdateUser={setUpdateUser} />
           <Timeline id={user._id} />
         </>
       )}{' '}
