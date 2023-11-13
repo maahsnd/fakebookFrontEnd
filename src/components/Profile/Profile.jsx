@@ -5,6 +5,7 @@ import Post from '../Post/Post';
 import NewPost from '../NewPost/NewPost';
 import styles from './profile.module.css';
 import { useParams } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 function Profile() {
   const [user, setUser] = useState(null);
@@ -13,10 +14,15 @@ function Profile() {
   const [updatePosts, setUpdatePosts] = useState(false);
   const [error, setError] = useState(null);
   const { id } = useParams();
+  const token = Cookies.get('jwt_token');
 
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await fetch('https://localhost:3000/users/' + id);
+      const response = await fetch('https://localhost:3000/users/' + id, {
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
+      });
       const data = await response.json();
       setUser(data);
     };
@@ -25,7 +31,11 @@ function Profile() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch('https://localhost:3000/posts/' + id);
+      const response = await fetch('https://localhost:3000/posts/' + id, {
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
+      });
       const data = await response.json();
       setPosts(data);
       setUpdatePosts(false);

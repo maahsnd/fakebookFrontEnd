@@ -3,6 +3,7 @@ import styles from './timeline.module.css';
 import FriendsList from '../FriendsList/FriendsList';
 import NewPost from '../NewPost/NewPost';
 import Post from '../Post/Post';
+import Cookies from 'js-cookie';
 
 function Timeline({ id }) {
   const [updatePosts, setUpdatePosts] = useState(false);
@@ -11,8 +12,14 @@ function Timeline({ id }) {
 
   useEffect(() => {
     const fetchPosts = async () => {
+      const token = Cookies.get('jwt_token');
       const response = await fetch(
-        'https://localhost:3000/posts/' + id + '/all'
+        'https://localhost:3000/posts/' + id + '/all',
+        {
+          headers: {
+            Authorization: 'Bearer ' + token
+          }
+        }
       );
       if (!response.ok) {
         console.error('Error fetching posts');

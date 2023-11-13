@@ -5,17 +5,14 @@ import { Tooltip } from '@mui/material';
 import '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import FriendRequests from '../FriendRequests/FriendRequests';
+import Cookies from 'js-cookie';
 
 function Nav({ user, setUpdateUser }) {
   const [friendModalIsOpen, setFriendModalIsOpen] = useState(false);
   const navigate = useNavigate();
-  const logOut = async () => {
-    const response = await fetch('https://localhost:3000/logout', {
-      method: 'POST'
-    });
-    if (response.ok) {
-      navigate('/login');
-    }
+  const logOut = () => {
+    Cookies.remove('jwt_token');
+    navigate('/login');
   };
   if (user)
     return (

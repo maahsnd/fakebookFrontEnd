@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Nav from '../Nav/Nav';
 import styles from './settings.module.css';
 import { useParams } from 'react-router-dom';
+import Cookies from 'js-cookie';
 
 function Settings() {
   const [showForm, setShowForm] = useState(false);
@@ -12,9 +13,12 @@ function Settings() {
   const [file, setFile] = useState(null);
   const [bio, setBio] = useState('');
   const { id } = useParams();
+  const token = Cookies.get('jwt_token');
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await fetch('https://localhost:3000/users/' + id);
+      const response = await fetch('https://localhost:3000/users/' + id, {
+        headers: { Authorization: 'Bearer ' + token }
+      });
       const data = await response.json();
       setUser(data);
       setBio(data.bio);
@@ -42,6 +46,7 @@ function Settings() {
       const response = await fetch(
         'https://localhost:3000/users/' + id + '/profilepic',
         {
+          headers: { Authorization: 'Bearer ' + token },
           method: 'POST',
           body: formData
         }
@@ -141,6 +146,11 @@ function Settings() {
                 name="updateBio"
                 id="updateBio"
                 value={bio}
+                placeholder={
+                  bio == '' || bio == undefined
+                    ? 'Write something about yourself!'
+                    : null
+                }
               ></textarea>
               <button className={styles.bioBtn} disabled={disableBioBtn}>
                 Update

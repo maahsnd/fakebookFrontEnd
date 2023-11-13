@@ -3,15 +3,21 @@ import styles from './friendslist.module.css';
 import UserIcon from '../UserIcon/UserIcon';
 import { Tooltip } from '@mui/material';
 import '@emotion/styled';
+import Cookies from 'js-cookie';
 
 function FriendsList({ id }) {
   const [friends, setFriends] = useState([]);
   const [disabledButtons, setDisabledButtons] = useState({});
-
+  const token = Cookies.get('jwt_token');
   useEffect(() => {
     const fetchFriends = async () => {
       const response = await fetch(
-        'https://localhost:3000/users/' + id + '/suggested_friends'
+        'https://localhost:3000/users/' + id + '/suggested_friends',
+        {
+          headers: {
+            Authorization: 'Bearer ' + token
+          }
+        }
       );
       if (!response.ok) {
         console.error('Error fetching friends');
@@ -38,7 +44,8 @@ function FriendsList({ id }) {
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token
         },
         body: JSON.stringify(body)
       }
