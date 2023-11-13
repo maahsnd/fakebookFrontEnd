@@ -11,7 +11,6 @@ function Home() {
   const token = Cookies.get('jwt_token');
   const navigate = useNavigate();
   useEffect(() => {
-    const token = Cookies.get('jwt_token');
     const fetchUser = async () => {
       const response = await fetch('https://localhost:3000/users/' + userId, {
         headers: {
