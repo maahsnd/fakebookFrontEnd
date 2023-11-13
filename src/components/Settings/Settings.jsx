@@ -89,7 +89,7 @@ function Settings() {
   };
 
   if (!token || token == 'undefined' || token == null) {
-    navigate('/');
+    navigate('/login');
   }
 
   return (

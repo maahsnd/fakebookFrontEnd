@@ -32,13 +32,13 @@ function Nav({ setUpdateUser }) {
   }, []);
 
   if (!token || token == 'undefined' || token == null) {
-    navigate('/');
+    navigate('/login');
   }
   if (user)
     return (
       <nav className={styles.container}>
         <button className={styles.homeBtn}>
-          <a href={'/' + user._id}>Fakebook</a>
+          <a href={'/'}>Fakebook</a>
         </button>
         <div className={styles.buttonsContainer}>
           <UserIcon user={user} />

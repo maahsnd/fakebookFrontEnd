@@ -46,7 +46,7 @@ function Profile() {
   }, [updatePosts]);
 
   if (!token || token == 'undefined' || token == null) {
-    navigate('/');
+    navigate('/login');
   }
 
   return (

@@ -25,7 +25,7 @@ function Home() {
   }, [updateUser]);
 
   if (!token || token == 'undefined' || token == null) {
-    navigate('/');
+    navigate('/login');
   }
 
   return (
