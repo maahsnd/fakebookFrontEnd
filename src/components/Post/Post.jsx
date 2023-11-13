@@ -118,10 +118,6 @@ function Post({ post, setError, setUpdatePosts }) {
     </form>
   );
 
-  if (!token || token == 'undefined' || token == null) {
-    navigate('/');
-  }
-
   return (
     <div className={styles.masterContainer}>
       <LikeDisplay
