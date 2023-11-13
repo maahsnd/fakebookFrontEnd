@@ -30,6 +30,10 @@ function Nav({ setUpdateUser }) {
     };
     fetchUser();
   }, []);
+
+  if (!token || token == 'undefined' || token == null) {
+    navigate('/');
+  }
   if (user)
     return (
       <nav className={styles.container}>

@@ -3,6 +3,7 @@ import Nav from '../Nav/Nav';
 import styles from './settings.module.css';
 import { useParams } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 function Settings() {
   const [showForm, setShowForm] = useState(false);
@@ -13,6 +14,7 @@ function Settings() {
   const [file, setFile] = useState(null);
   const [bio, setBio] = useState('');
   const { id } = useParams();
+  const navigate = useNavigate();
   const token = Cookies.get('jwt_token');
   useEffect(() => {
     const fetchUser = async () => {
@@ -85,6 +87,10 @@ function Settings() {
     }
     setUpdateUser(true);
   };
+
+  if (!token || token == 'undefined' || token == null) {
+    navigate('/');
+  }
 
   if (user) {
     return (

@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import Nav from '../Nav/Nav';
 import Timeline from '../Timeline/Timeline';
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
   const userId = Cookies.get('user_id');
   const [user, setUser] = useState(null);
   const [updateUser, setUpdateUser] = useState(false);
+  const token = Cookies.get('jwt_token');
+  const navigate = useNavigate();
   useEffect(() => {
     const token = Cookies.get('jwt_token');
     const fetchUser = async () => {
@@ -21,6 +24,10 @@ function Home() {
     };
     fetchUser();
   }, [updateUser]);
+
+  if (!token || token == 'undefined' || token == null) {
+    navigate('/');
+  }
 
   return (
     <div>

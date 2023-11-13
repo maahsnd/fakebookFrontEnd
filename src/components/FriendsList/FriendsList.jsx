@@ -4,11 +4,13 @@ import UserIcon from '../UserIcon/UserIcon';
 import { Tooltip } from '@mui/material';
 import '@emotion/styled';
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 function FriendsList({ id }) {
   const [friends, setFriends] = useState([]);
   const [disabledButtons, setDisabledButtons] = useState({});
   const token = Cookies.get('jwt_token');
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchFriends = async () => {
       const response = await fetch(
@@ -56,6 +58,10 @@ function FriendsList({ id }) {
     }
     setDisabledButtons({ ...disabledButtons, [friendId]: true });
   };
+
+  if (!token || token == 'undefined' || token == null) {
+    navigate('/');
+  }
 
   return (
     <div className={styles.container}>

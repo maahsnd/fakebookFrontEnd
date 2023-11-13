@@ -6,6 +6,7 @@ import NewPost from '../NewPost/NewPost';
 import styles from './profile.module.css';
 import { useParams } from 'react-router-dom';
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 function Profile() {
   const [user, setUser] = useState(null);
@@ -15,6 +16,7 @@ function Profile() {
   const [error, setError] = useState(null);
   const { id } = useParams();
   const token = Cookies.get('jwt_token');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -42,6 +44,10 @@ function Profile() {
     };
     fetchPosts();
   }, [updatePosts]);
+
+  if (!token || token == 'undefined' || token == null) {
+    navigate('/');
+  }
 
   if (user && posts)
     return (
@@ -72,7 +78,7 @@ function Profile() {
                     ))}
                   </div>
                 ) : (
-                  <p>No friends yet!</p>
+                  <p className={styles.bioText}>No friends yet!</p>
                 )}
               </div>
             </div>
