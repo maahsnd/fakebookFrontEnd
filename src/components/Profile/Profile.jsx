@@ -83,12 +83,15 @@ function Profile() {
               </div>
             </div>
             <div className={styles.posts}>
-              <NewPost
-                id={user._id}
-                setUpdatePosts={setUpdatePosts}
-                setError={setError}
-                error={error}
-              />
+              {user._id === Cookies.get('user_id') && (
+                <NewPost
+                  id={user._id}
+                  setUpdatePosts={setUpdatePosts}
+                  setError={setError}
+                  error={error}
+                />
+              )}
+
               {posts.length > 0 && (
                 <>
                   {posts.map((post) => {
