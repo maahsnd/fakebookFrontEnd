@@ -8,6 +8,7 @@ import Profile from './components/Profile/Profile';
 
 function App() {
   const router = createBrowserRouter([
+    { path: '/', element: <Login /> },
     { path: '/login', element: <Login /> },
     { path: '/users/:id', element: <Profile /> },
     { path: '/:id', element: <Home /> },
