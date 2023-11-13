@@ -9,9 +9,14 @@ import Profile from './components/Profile/Profile';
 function App() {
   const router = createBrowserRouter([
     { path: '/login', element: <Login /> },
-    { path: '/users/:id', element: <Profile /> },
-    { path: '/', element: <Home /> },
-    { path: '/:id/settings', element: <Settings /> }
+    {
+      path: '/',
+      element: <Home />,
+      children: [
+        { path: '/users/:id', element: <Profile /> },
+        { path: '/:id/settings', element: <Settings /> }
+      ]
+    }
   ]);
 
   return <RouterProvider router={router} />;
