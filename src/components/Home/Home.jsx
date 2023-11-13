@@ -1,17 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import Nav from '../Nav/Nav';
 import Timeline from '../Timeline/Timeline';
 import Cookies from 'js-cookie';
 
 function Home() {
-  const { id } = useParams();
+  const userId = Cookies.get('user_id');
   const [user, setUser] = useState(null);
   const [updateUser, setUpdateUser] = useState(false);
   useEffect(() => {
     const token = Cookies.get('jwt_token');
     const fetchUser = async () => {
-      const response = await fetch('https://localhost:3000/users/' + id, {
+      const response = await fetch('https://localhost:3000/users/' + userId, {
         headers: {
           Authorization: 'Bearer ' + token
         }
@@ -27,7 +26,7 @@ function Home() {
     <div>
       {user && (
         <>
-          <Nav user={user} setUpdateUser={setUpdateUser} />
+          <Nav setUpdateUser={setUpdateUser} />
           <Timeline id={user._id} />
         </>
       )}{' '}

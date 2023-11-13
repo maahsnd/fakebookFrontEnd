@@ -89,7 +89,7 @@ function Settings() {
   if (user) {
     return (
       <>
-        <Nav user={user} setUpdateUser={setUpdateUser} />
+        <Nav setUpdateUser={setUpdateUser} />
         <div className={styles.settingsContainer}>
           <h2 className={styles.settingsTitle}>Settings</h2>
           <div className={styles.profPicContainer}>

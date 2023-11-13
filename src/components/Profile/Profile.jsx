@@ -46,7 +46,7 @@ function Profile() {
   if (user && posts)
     return (
       <div className={styles.pageContainer}>
-        <Nav user={user} setUpdateUser={setUpdateUser} />
+        <Nav setUpdateUser={setUpdateUser} />
         <div className={styles.profileContainer}>
           <header className={styles.userContainer}>
             <img
