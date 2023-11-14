@@ -6,7 +6,6 @@ import { useState } from 'react';
 export const ProtectedLayout = () => {
   const [updateUser, setUpdateUser] = useState(false);
   const user = Cookies.get('jwt_token');
-  console.log(user);
   if (!user) {
     // user is not authenticated
     return <Navigate to="/login" />;

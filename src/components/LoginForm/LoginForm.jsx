@@ -44,7 +44,6 @@ function LoginForm() {
         method: 'POST'
       });
       const data = await response.json();
-      console.log(data);
       if (response.ok) {
         // Store the JWT token in cookies
         Cookies.set('jwt_token', data.token);
@@ -69,7 +68,6 @@ function LoginForm() {
         password: password,
         confirm_password: passwordConfirm
       };
-      console.log(body);
       const response = await fetch('https://localhost:3000/signup', {
         method: 'POST',
         headers: {
