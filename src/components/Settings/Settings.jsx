@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Nav from '../Nav/Nav';
 import styles from './settings.module.css';
 import { useParams } from 'react-router-dom';
 import Cookies from 'js-cookie';
@@ -94,7 +93,6 @@ function Settings() {
 
   return (
     <>
-      <Nav setUpdateUser={setUpdateUser} />
       <div className={styles.settingsContainer}>
         <h2 className={styles.settingsTitle}>Settings</h2>
         {user && (
