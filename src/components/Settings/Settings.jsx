@@ -57,6 +57,7 @@ function Settings() {
       return;
     }
     setUpdateUser(true);
+    setShowForm(false);
   };
 
   //bio functions
