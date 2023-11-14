@@ -6,8 +6,9 @@ import '@emotion/styled';
 import { useNavigate } from 'react-router-dom';
 import FriendRequests from '../FriendRequests/FriendRequests';
 import Cookies from 'js-cookie';
+import { Link } from 'react-router-dom';
 
-function Nav({ setUpdateUser }) {
+function Nav({ updateUser, setUpdateUser }) {
   const [friendModalIsOpen, setFriendModalIsOpen] = useState(false);
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
@@ -29,7 +30,8 @@ function Nav({ setUpdateUser }) {
       setUser(data);
     };
     fetchUser();
-  }, []);
+    setUpdateUser(false);
+  }, [updateUser]);
 
   if (!token || token == 'undefined' || token == null) {
     navigate('/login');
@@ -38,7 +40,7 @@ function Nav({ setUpdateUser }) {
     return (
       <nav className={styles.container}>
         <button className={styles.homeBtn}>
-          <a href={'/'}>Fakebook</a>
+          <Link to={'/'}>Fakebook</Link>
         </button>
         <div className={styles.buttonsContainer}>
           <UserIcon user={user} />
@@ -62,16 +64,13 @@ function Nav({ setUpdateUser }) {
             id={user._id}
           />
           <Tooltip title="Settings">
-            <button
-              className={styles.settingsBtn}
-              onClick={() => navigate(`/${user._id}/settings`)}
-            >
+            <Link className={styles.settingsBtn} to={`/settings`}>
               <img
                 className={styles.settingsImg}
                 src="https://res.cloudinary.com/dscsiijis/image/upload/c_scale,w_50/v1699554218/setting_b29rfh.png"
                 alt="Settings icon"
               />
-            </button>
+            </Link>
           </Tooltip>
           <Tooltip title="Log Out">
             <button className={styles.logOutBtn} onClick={logOut}>
