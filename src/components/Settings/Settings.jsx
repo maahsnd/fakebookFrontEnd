@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styles from './settings.module.css';
 import Cookies from 'js-cookie';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext } from 'react-router-dom';
 
 function Settings() {
   const [showForm, setShowForm] = useState(false);
-  const [updateUser, setUpdateUser] = useState(false);
+  const [updateLocalUser, setUpdateLocalUser] = useState(false);
   const [disablePicSubmitBtn, setDisablePicSubmitBtn] = useState(false);
   const [disableBioBtn, setDisableBioBtn] = useState(false);
   const [user, setUser] = useState(null);
@@ -14,6 +14,7 @@ function Settings() {
   const navigate = useNavigate();
   const token = Cookies.get('jwt_token');
   const id = Cookies.get('user_id');
+  const [updateUser, setUpdateUser] = useOutletContext();
   useEffect(() => {
     const fetchUser = async () => {
       const response = await fetch('https://localhost:3000/users/' + id, {
@@ -22,10 +23,10 @@ function Settings() {
       const data = await response.json();
       setUser(data);
       setBio(data.bio);
-      setUpdateUser(false);
+      setUpdateLocalUser(false);
     };
     fetchUser();
-  }, [updateUser]);
+  }, [updateLocalUser]);
 
   //photo functions
   const onFileChange = (e) => {
@@ -56,8 +57,10 @@ function Settings() {
       console.error(err);
       return;
     }
-    setUpdateUser(true);
+    setUpdateLocalUser(true);
     setShowForm(false);
+    //update prof pic in nav
+    setUpdateUser(true);
   };
 
   //bio functions
@@ -84,7 +87,7 @@ function Settings() {
       console.error(err);
       return;
     }
-    setUpdateUser(true);
+    setUpdateLocalUser(true);
   };
 
   if (!token || token == 'undefined' || token == null) {
