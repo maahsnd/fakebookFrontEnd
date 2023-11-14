@@ -1,0 +1,52 @@
+.container {
+  min-width: fit-content;
+  margin-left: 20px;
+}
+.friendsTitle {
+  text-align: start;
+  font-size: 24px;
+  padding: 10px 0 10px 6px;
+  margin: 0;
+}
+
+.friendsList {
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestedFriend {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.addFriendBtn {
+  height: 30px;
+  width: 30px;
+  background-color: transparent;
+  border: none;
+  margin-left: auto;
+  background-color: transparent;
+  border-radius: 50%;
+}
+.addFriendBtn > p {
+  position: relative;
+  top: -20px;
+  color: green;
+}
+
+.addFriendBtnImg:hover {
+  background-color: pink;
+  cursor: pointer;
+}
+
+.addFriendBtnImg {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.noFriends {
+  margin-left: 6px;
+}

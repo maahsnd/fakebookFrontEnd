@@ -1,0 +1,114 @@
+.settingsContainer {
+  margin-left: 5vw;
+  margin-right: 5vw;
+}
+.settingsTitle {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+.profPicTitle,
+.aboutMeTitle {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.profImg {
+  height: 150px;
+  width: 150px;
+  object-fit: cover;
+  background-color: transparent;
+  border-radius: 50%;
+  border: pink 2px solid;
+}
+
+.picAndChangeContainer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.changeBtn {
+  margin-left: 20px;
+  height: 40px;
+  padding: 9px 13px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 15px;
+  background-color: pink;
+  border: black 2px solid;
+}
+
+.changeBtn:hover,
+.submitProfPic:hover {
+  box-shadow: 0 0 10px pink;
+  cursor: pointer;
+}
+
+.formContainerShow {
+  display: flex;
+}
+
+.formContainerHide {
+  display: none;
+}
+
+.profPicForm {
+  padding: 20px;
+  background-color: rgba(128, 128, 128, 0.1);
+  border-radius: 10px;
+}
+
+.submitProfPic {
+  margin-left: 60px;
+  border-radius: 25px;
+  background-color: pink;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  font-size: 18px;
+}
+
+.profPicForm > input {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.aboutMe {
+  margin-top: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: fit-content;
+  max-width: 700px;
+}
+
+.bioForm {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.bioTextArea {
+  width: calc(100% - 24px);
+  height: 120px;
+  border-radius: 15px;
+  resize: none;
+  padding: 12px;
+  border: none;
+  font-size: 18px;
+  background-color: rgba(128, 128, 128, 0.1);
+}
+.bioBtn {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  background-color: pink;
+  border-radius: 15px;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 8px 16px;
+  border: none;
+  width: fit-content;
+}

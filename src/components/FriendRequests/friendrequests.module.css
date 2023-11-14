@@ -1,0 +1,44 @@
+.userIconContainer {
+  margin-top: 10px;
+  margin-left: -6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.friendRequestsTitle {
+  margin: 3px 0;
+}
+
+button {
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 6px 5px;
+}
+
+.acceptBtn {
+  color: white;
+  background-color: pink;
+  border: 2px solid pink;
+}
+
+.declineBtn {
+  background-color: transparent;
+  margin-left: 5px;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.declineBtn:hover {
+  border-color: red;
+  background-color: red;
+  color: white;
+}
+
+.acceptBtn:hover {
+  box-shadow: 0 0 15px pink;
+  color: black;
+  border-color: black;
+}

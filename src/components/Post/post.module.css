@@ -1,0 +1,176 @@
+.masterContainer {
+  width: 95%;
+}
+
+.postContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 25px;
+  background-color: rgba(255, 192, 203, 0);
+  border-radius: 15px;
+  box-shadow: 0px 0px 0px 2px pink inset, 0 0 15px 0 rgba(0, 0, 0, 0.2);
+}
+.postHeader {
+  display: flex;
+  align-items: center;
+  width: 92.5%;
+  margin: 15px 0;
+  border-radius: 15px 15px 0px 0px;
+}
+.postHeaderContainer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: white;
+  border-radius: 15px 15px 0 0;
+  box-shadow: 0px 0px 0px 2px pink inset;
+}
+
+.time {
+  font-size: 13px;
+  color: grey;
+  margin-left: -5px;
+}
+
+.postContent {
+  width: 92.5%;
+  background-color: transparent;
+}
+
+.likeAndComment {
+  display: flex;
+  justify-content: space-between;
+
+  color: grey;
+}
+
+.likes,
+.comments {
+  padding-top: 10px;
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  margin: 10px 0 15px 0;
+}
+
+.likes:hover,
+.comments:hover {
+  text-decoration: underline pink;
+  cursor: pointer;
+}
+
+hr {
+  margin: 0;
+}
+
+.postText {
+  font-weight: 600;
+  color: rgb(65, 64, 64);
+}
+
+.likeAndCommentBtnContainer {
+  width: 100%;
+  background-color: white;
+  justify-content: space-between;
+  display: flex;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0px 0px 0px 2px pink inset;
+}
+.likeBtn,
+.commentBtn {
+  border: 2px solid pink;
+  width: 50%;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px 0px;
+  background-color: transparent;
+  height: 35px;
+  transition: background-color 0.5s;
+  transition: border 0.5s;
+}
+
+.likeBtn:hover,
+.commentBtn:hover {
+  background-color: pink;
+  border: 2px solid rgba(0, 0, 0, 0.554);
+  cursor: pointer;
+}
+
+.likeBtn {
+  border-bottom-left-radius: 15px;
+}
+.commentBtn {
+  border-bottom-right-radius: 15px;
+}
+
+.commentForm {
+  position: relative;
+  width: 98%;
+  margin: 2px 0 2px 0;
+  display: flex;
+  flex-direction: column;
+}
+.commentTextArea {
+  border: none;
+  resize: none;
+  min-height: 80px;
+  border-radius: 0 0 15px 15px;
+  margin-bottom: 1px;
+  padding: 12px 40px 12px 12px;
+  min-height: 45px;
+  background-color: rgba(128, 128, 128, 0.141);
+}
+
+.submitCommentBtn {
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  width: min-content;
+  border-radius: 20%;
+  padding: 2px 4px 4px 2px;
+  height: 34px;
+}
+
+.submitCommentBtn {
+  bottom: 5px;
+  right: 5px;
+}
+
+.deleteCommentBtn {
+  top: 5px;
+  right: 5px;
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  width: min-content;
+  padding: 2px;
+  height: 22px;
+  border-radius: 5px;
+}
+
+.deleteCommentImg {
+  height: 20px;
+}
+
+.submitCommentImg {
+  height: 30px;
+}
+.submitCommentBtn:hover {
+  background-color: pink;
+  box-shadow: 0 0 10px pink;
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.deleteCommentBtn:hover {
+  background-color: rgba(255, 0, 0, 0.574);
+  cursor: pointer;
+}
+
+.postCommentContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}

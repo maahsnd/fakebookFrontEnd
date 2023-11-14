@@ -1,0 +1,85 @@
+.container {
+  display: flex;
+  background-color: yellow;
+  padding: 8px 0 8px 0;
+  justify-content: space-between;
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+}
+
+.buttonsContainer {
+  display: flex;
+  align-items: center;
+}
+
+.homeBtn {
+  margin-left: 5vw;
+  background-color: transparent;
+  border: none;
+  padding: 10px 0 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.homeBtn > a {
+  text-decoration: none;
+  color: black;
+  transition: transform 0.3s;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.homeBtn > a:hover {
+  text-decoration: underline pink;
+  text-underline-offset: 4px;
+  transform: translateY(3px);
+}
+
+.friendRequestImg,
+.logOutImg,
+.settingsImg {
+  height: 40px;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+.friendRequestBtn {
+  border-radius: 50%;
+  margin-right: 30px;
+  margin-left: 40px;
+}
+
+.friendRequestBtn:hover,
+.logOutBtn:hover,
+.settingsBtn:hover {
+  box-shadow: 0 0 10px pink;
+  cursor: pointer;
+}
+
+.logOutBtn,
+.friendRequestBtn,
+.settingsBtn {
+  border: none;
+  padding: 0;
+  height: 40px;
+  background-color: transparent;
+}
+
+.logOutBtn {
+  border-radius: 50%;
+  margin-right: 5vw;
+}
+
+.logOutBtn:hover {
+  background-color: pink;
+}
+
+.settingsBtn {
+  margin-right: 30px;
+  border-radius: 50%;
+}
+
+.settingsBtn:hover {
+  background-color: pink;
+}
