@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Nav from '../Nav/Nav';
 import Timeline from '../Timeline/Timeline';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
@@ -30,7 +29,6 @@ function Home() {
 
   return (
     <div>
-      <Nav setUpdateUser={setUpdateUser} />
       {user && (
         <>
           <Timeline id={user._id} />
