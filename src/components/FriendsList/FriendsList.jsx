@@ -66,7 +66,7 @@ function FriendsList({ id }) {
   return (
     <div className={styles.container}>
       <h3 className={styles.friendsTitle}>Suggested Friends</h3>
-      {friends && (
+      {friends.length && (
         <div className={styles.friendsList}>
           {friends.map((friend) => (
             <div className={styles.suggestedFriend} key={friend._id}>
