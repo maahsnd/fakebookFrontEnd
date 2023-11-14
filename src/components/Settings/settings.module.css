@@ -58,21 +58,24 @@
   padding: 20px;
   background-color: rgba(128, 128, 128, 0.1);
   border-radius: 10px;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .submitProfPic {
-  margin-left: 60px;
   border-radius: 25px;
   background-color: pink;
   font-weight: bold;
   padding: 10px;
   border: none;
   font-size: 18px;
+  width: 100px;
 }
 
 .profPicForm > input {
   padding: 5px;
   font-size: 14px;
+  border: none;
 }
 
 .aboutMe {

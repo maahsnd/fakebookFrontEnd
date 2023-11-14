@@ -13,7 +13,7 @@ export const ProtectedLayout = () => {
   return (
     <>
       <Nav updateUser={updateUser} setUpdateUser={setUpdateUser} />
-      <Outlet context={[updateUser]} />
+      <Outlet context={[updateUser, setUpdateUser]} />
     </>
   );
 };
