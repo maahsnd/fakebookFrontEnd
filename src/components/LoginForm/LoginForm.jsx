@@ -49,7 +49,7 @@ function LoginForm() {
         // Store the JWT token in cookies
         Cookies.set('jwt_token', data.token);
         Cookies.set('user_id', data.userId);
-        navigate('/' + data.userId);
+        navigate('/');
         return;
       } else {
         setError(data.msg);
@@ -82,7 +82,7 @@ function LoginForm() {
         // Store the JWT token in cookies
         Cookies.set('jwt_token', data.token);
         Cookies.set('user_id', data.userId);
-        navigate('/' + data.userId);
+        navigate('/');
         return;
       } else {
         setError(data.msg);
