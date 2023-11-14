@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 function FriendsList({ id }) {
   const [friends, setFriends] = useState([]);
+  const [updateFriends, setUpdateFriends] = useState(false);
   const [disabledButtons, setDisabledButtons] = useState({});
   const token = Cookies.get('jwt_token');
   const navigate = useNavigate();
@@ -32,9 +33,10 @@ function FriendsList({ id }) {
         buttons[user._id] = false;
       });
       setDisabledButtons(buttons);
+      setUpdateFriends(false);
     };
     fetchFriends();
-  }, []);
+  }, [updateFriends]);
 
   const addFriend = async (e) => {
     const friendId = e.target.getAttribute('value');
@@ -56,6 +58,7 @@ function FriendsList({ id }) {
       console.error('Error fetching friends');
       return;
     }
+    setUpdateFriends(true);
     setDisabledButtons({ ...disabledButtons, [friendId]: true });
   };
 
