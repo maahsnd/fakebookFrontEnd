@@ -2,6 +2,7 @@ import styles from './friendrequests.module.css';
 import UserIcon from '../UserIcon/UserIcon';
 import Modal from 'react-modal';
 import { useState } from 'react';
+import Cookies from 'js-cookie';
 
 function FriendRequests({
   friendModalIsOpen,
@@ -10,6 +11,8 @@ function FriendRequests({
   setUpdateUser,
   id
 }) {
+  const token = Cookies.get('jwt_token');
+  const [disableBtn, setDisableBtn] = useState(false);
   const closeModal = () => {
     setFriendModalIsOpen(false);
   };
@@ -24,6 +27,7 @@ function FriendRequests({
     }
   };
   const decline = async (e) => {
+    setDisableBtn(true);
     const requestId = e.target.value;
     const response = await fetch(
       'https://localhost:3000/users/' +
@@ -32,17 +36,22 @@ function FriendRequests({
         requestId +
         '/decline',
       {
-        method: 'POST'
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
       }
     );
     if (!response.ok) {
       console.error('Error handling request decline');
       return;
     }
+    setDisableBtn(false);
     setUpdateUser(true);
   };
 
   const accept = async (e) => {
+    setDisableBtn(true);
     const requestId = e.target.value;
     const response = await fetch(
       'https://localhost:3000/users/' +
@@ -51,13 +60,17 @@ function FriendRequests({
         requestId +
         '/accept',
       {
-        method: 'POST'
+        method: 'POST',
+        headers: {
+          Authorization: 'Bearer ' + token
+        }
       }
     );
     if (!response.ok) {
       console.error('Error handling request accept');
       return;
     }
+    setDisableBtn(false);
     setUpdateUser(true);
   };
 
@@ -81,6 +94,7 @@ function FriendRequests({
                 <UserIcon user={request} />
                 <div className={styles.btnContainer}>
                   <button
+                    disabled={disableBtn}
                     value={request._id}
                     className={styles.acceptBtn}
                     onClick={accept}
@@ -88,6 +102,7 @@ function FriendRequests({
                     Confirm
                   </button>
                   <button
+                    disabled={disableBtn}
                     value={request._id}
                     className={styles.declineBtn}
                     onClick={decline}
