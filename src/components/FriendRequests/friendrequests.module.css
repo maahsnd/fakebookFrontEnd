@@ -42,3 +42,7 @@ button:hover {
   color: black;
   border-color: black;
 }
+
+.btnContainer {
+  min-width: 160px;
+}
