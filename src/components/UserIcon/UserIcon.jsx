@@ -19,9 +19,9 @@ function UserIcon(props) {
           </Link>
         </Tooltip>
 
-        <a className={styles.user_link} href={`/users/${user._id}`}>
+        <Link className={styles.user_link} to={`/users/${user._id}`}>
           {user.username}
-        </a>
+        </Link>
       </button>
     </div>
   );
