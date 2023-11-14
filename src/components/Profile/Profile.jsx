@@ -1,22 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import Nav from '../Nav/Nav';
 import UserIcon from '../UserIcon/UserIcon';
 import Post from '../Post/Post';
 import NewPost from '../NewPost/NewPost';
 import styles from './profile.module.css';
-import { useParams } from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
 
 function Profile() {
   const [user, setUser] = useState(null);
-  const [updateUser, setUpdateUser] = useState(false);
   const [posts, setPosts] = useState(null);
   const [updatePosts, setUpdatePosts] = useState(false);
   const [error, setError] = useState(null);
   const { id } = useParams();
   const token = Cookies.get('jwt_token');
   const navigate = useNavigate();
+  const [updateUser] = useOutletContext();
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -29,7 +27,7 @@ function Profile() {
       setUser(data);
     };
     fetchUser();
-  }, []);
+  }, [id, updateUser]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -43,7 +41,7 @@ function Profile() {
       setUpdatePosts(false);
     };
     fetchPosts();
-  }, [updatePosts]);
+  }, [id, updatePosts]);
 
   if (!token || token == 'undefined' || token == null) {
     navigate('/login');
@@ -51,7 +49,6 @@ function Profile() {
 
   return (
     <div className={styles.pageContainer}>
-      <Nav setUpdateUser={setUpdateUser} />
       {user && posts && (
         <div className={styles.profileContainer}>
           <header className={styles.userContainer}>
@@ -92,7 +89,7 @@ function Profile() {
                 />
               )}
 
-              {posts.length > 0 && (
+              {posts.length > 0 ? (
                 <>
                   {posts.map((post) => {
                     return (
@@ -105,6 +102,8 @@ function Profile() {
                     );
                   })}
                 </>
+              ) : (
+                <p>No posts yet!</p>
               )}
             </div>
           </div>
