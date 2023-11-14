@@ -40,7 +40,7 @@ function Nav({ updateUser, setUpdateUser }) {
     return (
       <nav className={styles.container}>
         <button className={styles.homeBtn}>
-          <Link to={'/'}>Fakebook</Link>
+          <Link to={'/home'}>Fakebook</Link>
         </button>
         <div className={styles.buttonsContainer}>
           <UserIcon user={user} />
