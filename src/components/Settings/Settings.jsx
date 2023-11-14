@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styles from './settings.module.css';
-import { useParams } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,9 +11,9 @@ function Settings() {
   const [user, setUser] = useState(null);
   const [file, setFile] = useState(null);
   const [bio, setBio] = useState('');
-  const { id } = useParams();
   const navigate = useNavigate();
   const token = Cookies.get('jwt_token');
+  const id = Cookies.get('user_id');
   useEffect(() => {
     const fetchUser = async () => {
       const response = await fetch('https://localhost:3000/users/' + id, {
