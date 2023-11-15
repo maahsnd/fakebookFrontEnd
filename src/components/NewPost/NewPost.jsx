@@ -24,13 +24,16 @@ function NewPost(props) {
       author: id,
       text: post
     };
-    const response = await fetch('https://localhost:3000/posts/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    });
+    const response = await fetch(
+      'https://fakebookapi-production.up.railway.app/posts/',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      }
+    );
     if (!response.ok) {
       setDisabledButton(false);
       setError('Post failed');

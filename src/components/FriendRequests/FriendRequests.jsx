@@ -30,7 +30,7 @@ function FriendRequests({
     setDisableBtn(true);
     const requestId = e.target.value;
     const response = await fetch(
-      'https://localhost:3000/users/' +
+      'https://fakebookapi-production.up.railway.app/users/' +
         id +
         '/friendrequests/' +
         requestId +
@@ -54,7 +54,7 @@ function FriendRequests({
     setDisableBtn(true);
     const requestId = e.target.value;
     const response = await fetch(
-      'https://localhost:3000/users/' +
+      'https://fakebookapi-production.up.railway.app/users/' +
         id +
         '/friendrequests/' +
         requestId +

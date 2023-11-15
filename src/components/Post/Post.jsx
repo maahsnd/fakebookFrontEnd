@@ -24,7 +24,9 @@ function Post({ post, setError, setUpdatePosts }) {
       userid: id
     };
     const response = await fetch(
-      'https://localhost:3000/posts/' + post._id + '/likes',
+      'https://fakebookapi-production.up.railway.app/posts/' +
+        post._id +
+        '/likes',
       {
         method: 'POST',
         headers: {
@@ -54,7 +56,9 @@ function Post({ post, setError, setUpdatePosts }) {
       text: comment
     };
     const response = await fetch(
-      'https://localhost:3000/posts/' + post._id + '/comments',
+      'https://fakebookapi-production.up.railway.app/posts/' +
+        post._id +
+        '/comments',
       {
         method: 'POST',
         headers: {

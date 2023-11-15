@@ -5,7 +5,7 @@ export const HomeLayout = () => {
   const user = Cookies.get('user_id');
 
   if (user) {
-    return <Navigate to={`/${user}`} />;
+    return <Navigate to={`/home`} />;
   }
 
   return (

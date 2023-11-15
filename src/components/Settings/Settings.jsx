@@ -17,9 +17,12 @@ function Settings() {
   const [updateUser, setUpdateUser] = useOutletContext();
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await fetch('https://localhost:3000/users/' + id, {
-        headers: { Authorization: 'Bearer ' + token }
-      });
+      const response = await fetch(
+        'https://fakebookapi-production.up.railway.app/users/' + id,
+        {
+          headers: { Authorization: 'Bearer ' + token }
+        }
+      );
       const data = await response.json();
       setUser(data);
       setBio(data.bio);
@@ -45,7 +48,9 @@ function Settings() {
     formData.set('profilePicture', file);
     try {
       const response = await fetch(
-        'https://localhost:3000/users/' + id + '/profilepic',
+        'https://fakebookapi-production.up.railway.app/users/' +
+          id +
+          '/profilepic',
         {
           headers: { Authorization: 'Bearer ' + token },
           method: 'POST',
@@ -75,13 +80,16 @@ function Settings() {
     };
     e.preventDefault();
     try {
-      await fetch('https://localhost:3000/users/' + id + '/bio', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-      });
+      await fetch(
+        'https://fakebookapi-production.up.railway.app/users/' + id + '/bio',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        }
+      );
       setDisableBioBtn(false);
     } catch (err) {
       console.error(err);
