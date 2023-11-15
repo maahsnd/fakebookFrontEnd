@@ -15,7 +15,9 @@ function FriendsList({ id }) {
   useEffect(() => {
     const fetchFriends = async () => {
       const response = await fetch(
-        'https://localhost:3000/users/' + id + '/suggested_friends',
+        'https://fakebookapi-production.up.railway.app/users/' +
+          id +
+          '/suggested_friends',
         {
           headers: {
             Authorization: 'Bearer ' + token
@@ -44,7 +46,9 @@ function FriendsList({ id }) {
       to: friendId
     };
     const response = await fetch(
-      'https://localhost:3000/users/' + id + '/friendrequests',
+      'https://fakebookapi-production.up.railway.app/users/' +
+        id +
+        '/friendrequests',
       {
         method: 'POST',
         headers: {

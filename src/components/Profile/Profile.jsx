@@ -18,11 +18,14 @@ function Profile() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await fetch('https://localhost:3000/users/' + id, {
-        headers: {
-          Authorization: 'Bearer ' + token
+      const response = await fetch(
+        'https://fakebookapi-production.up.railway.app/users/' + id,
+        {
+          headers: {
+            Authorization: 'Bearer ' + token
+          }
         }
-      });
+      );
       const data = await response.json();
       setUser(data);
     };
@@ -31,11 +34,14 @@ function Profile() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await fetch('https://localhost:3000/posts/' + id, {
-        headers: {
-          Authorization: 'Bearer ' + token
+      const response = await fetch(
+        'https://fakebookapi-production.up.railway.app/posts/' + id,
+        {
+          headers: {
+            Authorization: 'Bearer ' + token
+          }
         }
-      });
+      );
       const data = await response.json();
       setPosts(data);
       setUpdatePosts(false);

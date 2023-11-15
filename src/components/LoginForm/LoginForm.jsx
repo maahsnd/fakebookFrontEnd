@@ -13,13 +13,16 @@ function LoginForm() {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://localhost:3000/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, password })
-      });
+      const response = await fetch(
+        'https://fakebookapi-production.up.railway.app/login',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ username, password })
+        }
+      );
       const data = await response.json();
       if (response.ok) {
         // Store the JWT token in cookies
@@ -40,9 +43,12 @@ function LoginForm() {
   const guestSignIn = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('https://localhost:3000/login/guest', {
-        method: 'POST'
-      });
+      const response = await fetch(
+        'https://fakebookapi-production.up.railway.app/login/guest',
+        {
+          method: 'POST'
+        }
+      );
       const data = await response.json();
       if (response.ok) {
         // Store the JWT token in cookies
@@ -68,13 +74,16 @@ function LoginForm() {
         password: password,
         confirm_password: passwordConfirm
       };
-      const response = await fetch('https://localhost:3000/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-      });
+      const response = await fetch(
+        'https://fakebookapi-production.up.railway.app/signup',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(body)
+        }
+      );
       const data = await response.json();
       if (response.ok) {
         // Store the JWT token in cookies

@@ -14,7 +14,7 @@ function Timeline({ id }) {
     const fetchPosts = async () => {
       const token = Cookies.get('jwt_token');
       const response = await fetch(
-        'https://localhost:3000/posts/' + id + '/all',
+        'https://fakebookapi-production.up.railway.app/posts/' + id + '/all',
         {
           headers: {
             Authorization: 'Bearer ' + token

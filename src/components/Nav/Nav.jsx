@@ -21,11 +21,14 @@ function Nav({ updateUser, setUpdateUser }) {
   };
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await fetch('https://localhost:3000/users/' + userId, {
-        headers: {
-          Authorization: 'Bearer ' + token
+      const response = await fetch(
+        'https://fakebookapi-production.up.railway.app/users/' + userId,
+        {
+          headers: {
+            Authorization: 'Bearer ' + token
+          }
         }
-      });
+      );
       const data = await response.json();
       setUser(data);
     };
