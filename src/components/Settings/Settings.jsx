@@ -20,7 +20,10 @@ function Settings() {
       const response = await fetch(
         'https://fakebookapi-production.up.railway.app/users/' + id,
         {
-          headers: { Authorization: 'Bearer ' + token }
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token
+          },
         }
       );
       const data = await response.json();
@@ -32,6 +35,21 @@ function Settings() {
   }, [updateLocalUser]);
 
   //photo functions
+
+  const convertBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+
+      fileReader.onLoad = () => {
+        resolve(fileReader.result);
+      }
+
+      fileReader.onerror= (error) => {
+        reject(error);
+      }
+    })
+  }
   const onFileChange = (e) => {
     const newFile = e.target.files[0];
     setFile(newFile);
@@ -44,15 +62,19 @@ function Settings() {
       console.error('no file');
       return;
     }
+    const base64 = await convertBase64(file)
     const formData = new FormData();
-    formData.set('profilePicture', file);
+    formData.set('image', base64);
     try {
       const response = await fetch(
         'https://fakebookapi-production.up.railway.app/users/' +
           id +
           '/profilepic',
         {
-          headers: { Authorization: 'Bearer ' + token },
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token
+          },
           method: 'POST',
           body: formData
         }
@@ -85,7 +107,8 @@ function Settings() {
         {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token
           },
           body: JSON.stringify(body)
         }
