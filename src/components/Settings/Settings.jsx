@@ -15,6 +15,7 @@ function Settings() {
   const token = Cookies.get('jwt_token');
   const id = Cookies.get('user_id');
   const [updateUser, setUpdateUser] = useOutletContext();
+
   useEffect(() => {
     const fetchUser = async () => {
       const response = await fetch(
@@ -36,26 +37,28 @@ function Settings() {
 
   //photo functions
 
-  const convertBase64 = (file) => {
+  const convertBase64 =  (file) => {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
       fileReader.readAsDataURL(file);
-
-      fileReader.onLoad = () => {
+      fileReader.onload = () => {
         resolve(fileReader.result);
       }
-
-      fileReader.onerror= (error) => {
-        reject(error);
+      fileReader.onerror = (error) => {
+        reject(error)
       }
     })
-  }
+  
+    
+    }
+
   const onFileChange = (e) => {
     const newFile = e.target.files[0];
     setFile(newFile);
   };
 
   const handleSubmit = async (e) => {
+
     setDisablePicSubmitBtn(true);
     e.preventDefault();
     if (!file) {
@@ -63,8 +66,8 @@ function Settings() {
       return;
     }
     const base64 = await convertBase64(file)
-    const formData = new FormData();
-    formData.set('image', base64);
+    console.log(base64)
+    const body = { image: base64}
     try {
       const response = await fetch(
         'https://fakebookapi-production.up.railway.app/users/' +
@@ -76,9 +79,11 @@ function Settings() {
             Authorization: 'Bearer ' + token
           },
           method: 'POST',
-          body: formData
+          body: JSON.stringify(body)
         }
+  
       );
+      console.log(response)
       setDisablePicSubmitBtn(false);
     } catch (err) {
       console.error(err);
