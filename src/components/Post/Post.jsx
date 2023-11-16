@@ -6,13 +6,15 @@ import { useState } from 'react';
 import { Tooltip } from '@mui/material';
 import '@emotion/styled';
 import Comment from '../Comment/Comment';
+import Cookies from 'js-cookie';
 import LikeDisplay from '../LikeDisplay/LikeDisplay';
 
 function Post({ post, setError, setUpdatePosts }) {
   const [comment, setComment] = useState(null);
   const [showComments, setShowComments] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
-  const { id } = useParams();
+  const id = Cookies.get('user_id')
+  const token = Cookies.get('jwt_token');
 
   const date = DateTime.fromISO(post.time);
   const humanDate = date
@@ -30,7 +32,8 @@ function Post({ post, setError, setUpdatePosts }) {
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token
         },
         body: JSON.stringify(body)
       }
@@ -62,7 +65,8 @@ function Post({ post, setError, setUpdatePosts }) {
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token
         },
         body: JSON.stringify(body)
       }
