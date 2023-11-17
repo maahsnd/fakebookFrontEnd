@@ -70,16 +70,12 @@ function FriendsList({ id }) {
       }
     );
     if (!response.ok) {
-      console.error('Error fetching friends');
+      console.error('Error adding friend');
       return;
     }
     setUpdateFriends(true);
     setDisabledButtons({ ...disabledButtons, [friendId]: true });
   };
-
-  if (!token || token == 'undefined' || token == null) {
-    navigate('/');
-  }
 
   return (
     <div className={styles.container}>

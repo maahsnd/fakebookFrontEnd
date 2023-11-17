@@ -5,6 +5,8 @@ import NewPost from '../NewPost/NewPost';
 import styles from './profile.module.css';
 import Cookies from 'js-cookie';
 import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
+import { Tooltip } from '@mui/material';
+import '@emotion/styled';
 
 function Profile() {
   const [user, setUser] = useState(null);
@@ -13,7 +15,6 @@ function Profile() {
   const [error, setError] = useState(null);
   const { id } = useParams();
   const token = Cookies.get('jwt_token');
-  const navigate = useNavigate();
   const [updateUser] = useOutletContext();
 
   useEffect(() => {
@@ -49,9 +50,31 @@ function Profile() {
     fetchPosts();
   }, [id, updatePosts]);
 
-  if (!token || token == 'undefined' || token == null) {
-    navigate('/login');
-  }
+  const addFriend = async (e) => {
+    const friendId = e.target.getAttribute('value');
+    const body = {
+      to: friendId
+    };
+    const response = await fetch(
+      'https://fakebookapi-production.up.railway.app/users/' +
+        id +
+        '/friendrequests',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token
+        },
+        body: JSON.stringify(body)
+      }
+    );
+    if (!response.ok) {
+      console.error('Error adding friend');
+      return;
+    }
+    setUpdateFriends(true);
+    setDisabledButtons({ ...disabledButtons, [friendId]: true });
+  };
 
   return (
     <div className={styles.pageContainer}>
@@ -64,6 +87,20 @@ function Profile() {
               className={styles.userProfImg}
             />
             <h3 className={styles.userName}>{user.username}</h3>
+            <button
+                className={styles.addFriendBtn}
+                onClick={addFriend}
+                disabled={disabledButtons[friend._id]}
+              >
+                <Tooltip title="Add friend">
+                  <img
+                    className={styles.addFriendBtnImg}
+                    value={user._id}
+                    src="https://res.cloudinary.com/dscsiijis/image/upload/c_thumb,w_200,g_face/v1699298250/add-contact_e7l4rp.png"
+                    alt="add friend"
+                  />
+                </Tooltip>
+              </button>
           </header>
           <div className={styles.contentContainer}>
             <div className={styles.friendsAndBio}>
