@@ -7,7 +7,6 @@ export const ProtectedLayout = () => {
   const [updateUser, setUpdateUser] = useState(false);
   const user = Cookies.get('jwt_token');
   if (!user) {
-    // user is not authenticated
     return <Navigate to="/login" />;
   }
   return (

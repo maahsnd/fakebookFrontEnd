@@ -2,15 +2,7 @@ import { Navigate, Outlet } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 export const HomeLayout = () => {
-  const user = Cookies.get('user_id');
+  const user = Cookies.get('jwt_token');
 
-  if (user) {
-    return <Navigate to={`/home`} />;
-  }
-
-  return (
-    <div>
-      <Outlet />
-    </div>
-  );
+  return user ? <Navigate to="/home" /> : <Outlet />;
 };

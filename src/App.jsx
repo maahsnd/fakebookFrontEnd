@@ -10,11 +10,12 @@ import { HomeLayout } from './components/HomeLayout';
 export default function App() {
   return (
     <Routes>
-      <Route element={<HomeLayout />}>
-        <Route path="/login" element={<Login />} />
+      <Route path="/login" element={<HomeLayout />}>
+        <Route index element={<Login />} />
       </Route>
 
       <Route path="/" element={<ProtectedLayout />}>
+        <Route index element={<Home />} />
         <Route path="home" element={<Home />} />
         <Route path="users/:id" element={<Profile />} />
         <Route path="settings" element={<Settings />} />
