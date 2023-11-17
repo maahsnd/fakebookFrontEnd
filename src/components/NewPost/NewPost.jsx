@@ -1,11 +1,13 @@
 import styles from './newpost.module.css';
 import { useState } from 'react';
+import Cookies from 'js-cookie';
 
 function NewPost(props) {
   const { id, setUpdatePosts } = props;
   const [post, setPost] = useState();
   const [disabledButton, setDisabledButton] = useState(false);
   const [error, setError] = useState(null);
+  const token = Cookies.get('jwt_token');
 
   const handleChange = (e) => {
     setDisabledButton(false);
@@ -29,9 +31,11 @@ function NewPost(props) {
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + token
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
+    
       }
     );
     if (!response.ok) {
