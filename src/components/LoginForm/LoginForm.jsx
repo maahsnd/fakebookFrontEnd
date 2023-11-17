@@ -26,8 +26,8 @@ function LoginForm() {
       const data = await response.json();
       if (response.ok) {
         // Store the JWT token in cookies
-        Cookies.set('jwt_token', data.token);
-        Cookies.set('user_id', data.userId);
+        Cookies.set('jwt_token', data.token, {sameSite: 'strict', secure: true}  );
+        Cookies.set('user_id', data.userId, {sameSite: 'strict', secure: true}  );
         navigate('/home');
         return;
       } else {
@@ -52,8 +52,8 @@ function LoginForm() {
       const data = await response.json();
       if (response.ok) {
         // Store the JWT token in cookies
-        Cookies.set('jwt_token', data.token);
-        Cookies.set('user_id', data.userId);
+        Cookies.set('jwt_token', data.token, {sameSite: 'strict', secure: true}  );
+        Cookies.set('user_id', data.userId, {sameSite: 'strict', secure: true}  );
         navigate('/home');
         return;
       } else {
@@ -87,8 +87,8 @@ function LoginForm() {
       const data = await response.json();
       if (response.ok) {
         // Store the JWT token in cookies
-        Cookies.set('jwt_token', data.token);
-        Cookies.set('user_id', data.userId);
+        Cookies.set('jwt_token', data.token, {sameSite: 'strict', secure: true}  );
+        Cookies.set('user_id', data.userId, {sameSite: 'strict', secure: true}  );
         navigate('/home');
         return;
       } else {
