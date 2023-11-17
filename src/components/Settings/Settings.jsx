@@ -58,7 +58,6 @@ function Settings() {
   };
 
   const handleSubmit = async (e) => {
-
     setDisablePicSubmitBtn(true);
     e.preventDefault();
     if (!file) {
@@ -66,7 +65,6 @@ function Settings() {
       return;
     }
     const base64 = await convertBase64(file)
-    console.log(base64)
     const body = { image: base64}
     try {
       const response = await fetch(
@@ -81,9 +79,7 @@ function Settings() {
           method: 'POST',
           body: JSON.stringify(body)
         }
-  
       );
-      console.log(response)
       setDisablePicSubmitBtn(false);
     } catch (err) {
       console.error(err);
