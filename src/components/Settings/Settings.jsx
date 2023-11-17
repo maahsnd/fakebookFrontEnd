@@ -54,6 +54,11 @@ function Settings() {
 
   const onFileChange = (e) => {
     const newFile = e.target.files[0];
+    if (newFile.size > 500000) {
+      alert('No. 500 kb max. And that is generous. Try again')
+      e.target.value = null
+      return
+    }
     setFile(newFile);
   };
 
