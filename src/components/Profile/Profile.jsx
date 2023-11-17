@@ -69,7 +69,8 @@ function Profile() {
             <div className={styles.friendsAndBio}>
               <div className={styles.bioContainer}>
                 <h3 className={styles.bioTitle}>About me</h3>
-                <p className={styles.bioText}>{user.bio}</p>
+                {user.bio ? <p className={styles.bioText}>{user.bio}</p> : <p className={styles.bioText}>Nothing written...yet</p>}
+                
               </div>
               <div className={styles.friendsContainer}>
                 <h3 className={styles.friendsTitle}>Friends</h3>
