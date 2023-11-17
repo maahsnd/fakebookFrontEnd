@@ -29,7 +29,8 @@ function FriendsList({ id }) {
         return;
       }
       const data = await response.json();
-      setFriends(data);
+      const limitedSuggestions = getRandomElements(data, 10)
+      setFriends(limitedSuggestions);
       let buttons = {};
       data.forEach((user) => {
         buttons[user._id] = false;
@@ -39,6 +40,16 @@ function FriendsList({ id }) {
     };
     fetchFriends();
   }, [updateFriends]);
+
+  function getRandomElements(arr, num) {
+    const copyArr = [...arr];
+    const resultArr = [];
+    for (let i = 0; i < num; i++) {
+      const randomIndex = Math.floor(Math.random() * copyArr.length);
+      resultArr.push(copyArr.splice(randomIndex, 1)[0]);
+    }
+    return resultArr;
+  }
 
   const addFriend = async (e) => {
     const friendId = e.target.getAttribute('value');
