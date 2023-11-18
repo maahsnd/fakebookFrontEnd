@@ -2,7 +2,7 @@
 
 Welcome to Fakebook, a Facebook clone styled with a personal, pink touch.
 
-Experience it live at:[https://fakebookfrontend.pages.dev/] 
+Experience it live at: https://fakebookfrontend.pages.dev/
 
 # Built with
 
