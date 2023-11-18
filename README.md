@@ -4,6 +4,8 @@ Welcome to Fakebook, a Facebook clone styled with a personal, pink touch.
 
 Experience it live at: https://fakebookfrontend.pages.dev/
 
+API Repo: https://github.com/maahsnd/fakebookAPI
+
 # Built with
 
 * React
