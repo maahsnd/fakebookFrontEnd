@@ -88,3 +88,31 @@
 .friendsList > div:last-child {
   padding-bottom: 20px;
 }
+
+.addFriendBtn {
+  height: 30px;
+  width: 30px;
+  background-color: transparent;
+  border: none;
+  margin-right: auto;
+  background-color: transparent;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  display: flex;
+}
+.addFriendBtn > p {
+  position: relative;
+  top: -10px;
+  color: green;
+}
+
+.addFriendBtnImg:hover {
+  background-color: pink;
+  cursor: pointer;
+}
+
+.addFriendBtnImg {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}

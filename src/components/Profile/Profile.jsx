@@ -4,7 +4,7 @@ import Post from '../Post/Post';
 import NewPost from '../NewPost/NewPost';
 import styles from './profile.module.css';
 import Cookies from 'js-cookie';
-import { useNavigate, useOutletContext, useParams } from 'react-router-dom';
+import {  useOutletContext, useParams } from 'react-router-dom';
 import { Tooltip } from '@mui/material';
 import '@emotion/styled';
 
@@ -13,8 +13,11 @@ function Profile() {
   const [posts, setPosts] = useState(null);
   const [updatePosts, setUpdatePosts] = useState(false);
   const [error, setError] = useState(null);
+  const [added, setAdded] = useState(false);
+  const [showRequest, setShowRequest] = useState(false)
   const { id } = useParams();
   const token = Cookies.get('jwt_token');
+  const userId = Cookies.get('user_id')
   const [updateUser] = useOutletContext();
 
   useEffect(() => {
@@ -29,6 +32,7 @@ function Profile() {
       );
       const data = await response.json();
       setUser(data);
+        friendRequestCheck(data);
     };
     fetchUser();
   }, [id, updateUser]);
@@ -50,7 +54,13 @@ function Profile() {
     fetchPosts();
   }, [id, updatePosts]);
 
+  //should friend request button be displayed?
+  const friendRequestCheck =  (user) => {
+  (user.friends.find((friend) => friend._id==userId) || (user._id === userId)) ? setShowRequest(false) : setShowRequest(true);
+  }
+
   const addFriend = async (e) => {
+    setAdded(true);
     const friendId = e.target.getAttribute('value');
     const body = {
       to: friendId
@@ -72,8 +82,6 @@ function Profile() {
       console.error('Error adding friend');
       return;
     }
-    setUpdateFriends(true);
-    setDisabledButtons({ ...disabledButtons, [friendId]: true });
   };
 
   return (
@@ -87,10 +95,10 @@ function Profile() {
               className={styles.userProfImg}
             />
             <h3 className={styles.userName}>{user.username}</h3>
-            <button
+            {showRequest &&     <button
                 className={styles.addFriendBtn}
                 onClick={addFriend}
-                disabled={disabledButtons[friend._id]}
+                disabled={added}
               >
                 <Tooltip title="Add friend">
                   <img
@@ -100,7 +108,10 @@ function Profile() {
                     alt="add friend"
                   />
                 </Tooltip>
-              </button>
+                {added ? <p>Sent</p> : <></>}
+              </button>}
+        
+            
           </header>
           <div className={styles.contentContainer}>
             <div className={styles.friendsAndBio}>
