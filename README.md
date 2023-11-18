@@ -1,10 +1,10 @@
-# H1 Fakebook
+# Fakebook
 
 Welcome to Fakebook, a Facebook clone styled with a personal, pink touch.
 
 Experience it live at:[https://fakebookfrontend.pages.dev/] 
 
-# H1 Built with
+# Built with
 
 ..* React
 ..* CSS Modules
