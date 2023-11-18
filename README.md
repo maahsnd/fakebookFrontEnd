@@ -26,9 +26,10 @@ Experience it live at:[https://fakebookfrontend.pages.dev/]
 * Add comments
 * Upload custom profile picture
 * Edit 'About Me' section of profile
-* Home page shows newsfeed of all your friend's posts
-* Profile page shows your own posts and friends list
+* Home page shows newsfeed of all your friends' posts
+* Profile page shows posts, friends list, and option to add friend
 * Suggested friends list
+
 
 
 
