@@ -65,6 +65,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-content: flex-end;
+  margin-bottom: 40px;
 }
 
 .posts > div {
