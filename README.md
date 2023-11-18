@@ -6,15 +6,15 @@ Experience it live at:[https://fakebookfrontend.pages.dev/]
 
 # Built with
 
-..* React
-..* CSS Modules
-..* Node.Js
-..* Express
-..* JS Cookie
-..* BcryptJs
-..* Cloudinary
-..* JSON Web Token
-..* Mongoose/MongoDB
+* React
+* CSS Modules
+* Node.Js
+* Express
+* JS Cookie
+* BcryptJs
+* Cloudinary
+* JSON Web Token
+* Mongoose/MongoDB
 
 # Features
 
