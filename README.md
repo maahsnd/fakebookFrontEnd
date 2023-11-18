@@ -6,6 +6,9 @@ Experience it live at: https://fakebookfrontend.pages.dev/
 
 API Repo: https://github.com/maahsnd/fakebookAPI
 
+![]
+(https://github.com/maahsnd/fakebookFrontEnd/blob/main/src/assets/chrome-capture-2023-10-18%20(1).gif)
+
 # Built with
 
 * React
