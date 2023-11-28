@@ -11,7 +11,7 @@ API Repo: https://github.com/maahsnd/fakebookAPI
 # Built with
 
 * React
-* CSS Modules
+* Vite
 * Node.Js
 * Express
 * JS Cookie
