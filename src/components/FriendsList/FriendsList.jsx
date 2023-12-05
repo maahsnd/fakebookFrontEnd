@@ -44,7 +44,9 @@ function FriendsList({ id }) {
     const resultArr = [];
     for (let i = 0; i < num; i++) {
       const randomIndex = Math.floor(Math.random() * copyArr.length);
-      resultArr.push(copyArr.splice(randomIndex, 1)[0]);
+      if (copyArr[i] !== undefined) {
+        resultArr.push(copyArr.splice(randomIndex, 1)[0]);
+      }
     }
     return resultArr;
   }
