@@ -8,6 +8,7 @@
   margin-top: 10px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
   border-radius: 15px;
+  border: 2px pink solid;
 }
 .container {
   width: 95%;
