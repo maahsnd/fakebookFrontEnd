@@ -26,14 +26,19 @@
   border-radius: 15px;
   resize: none;
   padding: 12px calc(5% - 2px) 48px;
-  border: pink solid 2px;
+  border: none;
+  border-color: transparent;
   font-size: 18px;
+}
+
+.newPostTextArea:focus {
+  outline: none;
 }
 
 .postBtn {
   position: absolute;
   right: 10px;
-  bottom: 25px;
+  bottom: 5px;
   background-color: pink;
   border-radius: 15px;
   font-size: 18px;
