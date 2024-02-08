@@ -10,42 +10,9 @@ function LogIn() {
 
   const handleButtonClick = (e) => {
     setSlideUp(true);
-    /*     setTimeout(() => {
+    setTimeout(() => {
       setShowSignUpForm(true);
-    }, '500'); */
-    guestSignIn(e);
-  };
-
-  const guestSignIn = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch(
-        'https://fakebookapi-production.up.railway.app/login/guest',
-        {
-          method: 'POST'
-        }
-      );
-      const data = await response.json();
-      if (response.ok) {
-        // Store the JWT token in cookies
-        Cookies.set('jwt_token', data.token, {
-          sameSite: 'strict',
-          secure: true
-        });
-        Cookies.set('user_id', data.userId, {
-          sameSite: 'strict',
-          secure: true
-        });
-        navigate('/home');
-        return;
-      } else {
-        setError(data.msg);
-        // Handle authentication error
-        console.error('Authentication failed');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
+    }, '500');
   };
 
   return (
