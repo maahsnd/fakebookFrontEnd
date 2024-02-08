@@ -39,6 +39,11 @@ input {
   flex-direction: column;
 }
 
+.error {
+  color: red;
+  font-size: 18px;
+}
+
 input {
   width: 100%;
   padding: 12px 10px;

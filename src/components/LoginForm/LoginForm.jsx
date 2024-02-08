@@ -7,6 +7,7 @@ function LoginForm() {
   const [preexistingUser, setPreexistingUser] = useState(true);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(false);
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const navigate = useNavigate();
 
@@ -37,7 +38,8 @@ function LoginForm() {
         navigate('/home');
         return;
       } else {
-        setError(data.msg);
+        createError(data.msg);
+
         // Handle authentication error
         console.error('Authentication failed');
       }
@@ -69,7 +71,7 @@ function LoginForm() {
         navigate('/home');
         return;
       } else {
-        setError(data.msg);
+        createError(data.msg);
         // Handle authentication error
         console.error('Authentication failed');
       }
@@ -119,6 +121,13 @@ function LoginForm() {
     }
   };
 
+  const createError = (error) => {
+    setError(error);
+    setTimeout(() => {
+      setError(false);
+    }, '5000');
+  };
+
   if (preexistingUser) {
     return (
       <div className={styles.container}>
@@ -126,6 +135,7 @@ function LoginForm() {
         <form onSubmit={handleLoginSubmit}>
           <div className={styles.formGroup}>
             {' '}
+            <h2 className={styles.error}>{error ? error : ''}</h2>
             <label>
               Username
               <input
