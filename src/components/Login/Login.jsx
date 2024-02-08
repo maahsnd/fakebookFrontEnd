@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import styles from './login.module.css';
 import LoginForm from '../LoginForm/LoginForm';
-import Cookies from 'js-cookie';
-import { useNavigate } from 'react-router-dom';
 function LogIn() {
   const [showSignUpForm, setShowSignUpForm] = useState(false);
   const [slideUp, setSlideUp] = useState(false);
-  const navigate = useNavigate();
 
   const handleButtonClick = (e) => {
     setSlideUp(true);
