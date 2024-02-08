@@ -26,8 +26,14 @@ function LoginForm() {
       const data = await response.json();
       if (response.ok) {
         // Store the JWT token in cookies
-        Cookies.set('jwt_token', data.token, {sameSite: 'strict', secure: true}  );
-        Cookies.set('user_id', data.userId, {sameSite: 'strict', secure: true}  );
+        Cookies.set('jwt_token', data.token, {
+          sameSite: 'strict',
+          secure: true
+        });
+        Cookies.set('user_id', data.userId, {
+          sameSite: 'strict',
+          secure: true
+        });
         navigate('/home');
         return;
       } else {
@@ -52,8 +58,14 @@ function LoginForm() {
       const data = await response.json();
       if (response.ok) {
         // Store the JWT token in cookies
-        Cookies.set('jwt_token', data.token, {sameSite: 'strict', secure: true}  );
-        Cookies.set('user_id', data.userId, {sameSite: 'strict', secure: true}  );
+        Cookies.set('jwt_token', data.token, {
+          sameSite: 'strict',
+          secure: true
+        });
+        Cookies.set('user_id', data.userId, {
+          sameSite: 'strict',
+          secure: true
+        });
         navigate('/home');
         return;
       } else {
@@ -87,8 +99,14 @@ function LoginForm() {
       const data = await response.json();
       if (response.ok) {
         // Store the JWT token in cookies
-        Cookies.set('jwt_token', data.token, {sameSite: 'strict', secure: true}  );
-        Cookies.set('user_id', data.userId, {sameSite: 'strict', secure: true}  );
+        Cookies.set('jwt_token', data.token, {
+          sameSite: 'strict',
+          secure: true
+        });
+        Cookies.set('user_id', data.userId, {
+          sameSite: 'strict',
+          secure: true
+        });
         navigate('/home');
         return;
       } else {
@@ -136,8 +154,8 @@ function LoginForm() {
             Log in
           </button>
           <hr />
-          <button className={styles.btn} onClick={guestSignIn}>
-            Log in as Guest User
+          <button className={styles.guestBtn} onClick={guestSignIn}>
+            Just Take Me There!
           </button>
           <button
             className={styles.btn}

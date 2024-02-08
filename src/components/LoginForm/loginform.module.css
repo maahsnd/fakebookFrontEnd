@@ -14,15 +14,22 @@ form > * {
   font-weight: bold;
 }
 
-.btn {
+.btn,
+.guestBtn {
   background-color: transparent;
   border-radius: 20px;
 }
 
-.btn:hover {
+.guestBtn {
+  background-color: yellow;
+}
+
+.btn:hover,
+.guestBtn:hover {
   background-color: rgba(255, 192, 203, 0.443);
 }
 .btn,
+.guestBtn,
 input {
   height: 2.5rem;
 }
