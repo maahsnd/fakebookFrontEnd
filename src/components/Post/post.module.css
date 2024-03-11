@@ -68,6 +68,7 @@ hr {
 .postText {
   font-weight: 600;
   color: rgb(65, 64, 64);
+  overflow-wrap: break-word;
 }
 
 .likeAndCommentBtnContainer {
